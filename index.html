@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mets Media</title>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #0a0a0a;
+      color: #e8e8e8;
+      font-family: 'Georgia', serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .wordmark {
+      font-size: clamp(2.8rem, 8vw, 5.5rem);
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #ffffff;
+    }
+
+    .wordmark span {
+      color: #c8a84b;
+    }
+
+    .divider {
+      width: 60px;
+      height: 1px;
+      background-color: #c8a84b;
+      margin: 1.8rem auto;
+    }
+
+    .tagline {
+      font-size: clamp(0.85rem, 2.2vw, 1.05rem);
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #999;
+      font-family: 'Arial', sans-serif;
+      font-weight: 400;
+    }
+
+    .coming-soon {
+      margin-top: 3.5rem;
+      font-size: clamp(0.75rem, 1.8vw, 0.85rem);
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #555;
+      font-family: 'Arial', sans-serif;
+    }
+
+    footer {
+      position: fixed;
+      bottom: 1.5rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      color: #333;
+      font-family: 'Arial', sans-serif;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+
+  <main>
+    <h1 class="wordmark">Mets<span>.</span> Media</h1>
+    <div class="divider"></div>
+    <p class="tagline">Cinematic media for the mining industry</p>
+    <p class="coming-soon">Coming soon</p>
+  </main>
+
+  <footer>Hunter Valley, NSW</footer>
+
+</body>
+</html>
