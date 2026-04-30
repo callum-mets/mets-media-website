@@ -3,85 +3,463 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Mets Media — Cinematic media production for the mining sector.">
   <title>Mets Media</title>
-  <style>
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      background-color: #0a0a0a;
-      color: #e8e8e8;
-      font-family: 'Georgia', serif;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 2rem;
-    }
-
-    .wordmark {
-      font-size: clamp(2.8rem, 8vw, 5.5rem);
-      font-weight: 400;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: #ffffff;
-    }
-
-    .wordmark span {
-      color: #c8a84b;
-    }
-
-    .divider {
-      width: 60px;
-      height: 1px;
-      background-color: #c8a84b;
-      margin: 1.8rem auto;
-    }
-
-    .tagline {
-      font-size: clamp(0.85rem, 2.2vw, 1.05rem);
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: #999;
-      font-family: 'Arial', sans-serif;
-      font-weight: 400;
-    }
-
-    .coming-soon {
-      margin-top: 3.5rem;
-      font-size: clamp(0.75rem, 1.8vw, 0.85rem);
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: #555;
-      font-family: 'Arial', sans-serif;
-    }
-
-    footer {
-      position: fixed;
-      bottom: 1.5rem;
-      font-size: 0.7rem;
-      letter-spacing: 0.1em;
-      color: #333;
-      font-family: 'Arial', sans-serif;
-      text-transform: uppercase;
-    }
-  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
+  <!-- ============================================================
+       NAV
+  ============================================================ -->
+  <header class="site-header" id="site-header">
+    <nav class="nav container">
+      <a href="#hero" class="nav__logo" aria-label="Mets Media — home">
+        <img src="images/mets-logo.png" alt="Mets Media" class="nav__logo-img">
+      </a>
+      <button class="nav__toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="#services" class="nav__link">Services</a></li>
+        <li><a href="#work"     class="nav__link">Work</a></li>
+        <li><a href="#about"    class="nav__link">About</a></li>
+        <li><a href="#why-mets" class="nav__link">Why Mets</a></li>
+        <li><a href="#contact"  class="nav__link nav__link--cta">Get in Touch</a></li>
+      </ul>
+    </nav>
+  </header>
+
   <main>
-    <h1 class="wordmark">Mets<span>.</span> Media</h1>
-    <div class="divider"></div>
-    <p class="tagline">Cinematic media for the mining industry</p>
-    <p class="coming-soon">Coming soon</p>
+
+    <!-- ============================================================
+         HERO
+    ============================================================ -->
+    <section class="hero" id="hero">
+      <div class="hero__media">
+        <!-- Swap for a full-width video or image later -->
+        <div class="hero__media-placeholder"></div>
+        <div class="hero__overlay"></div>
+      </div>
+      <div class="hero__content container">
+        <p class="hero__eyebrow">Mining-Grade Media · Hunter Valley</p>
+        <h1 class="hero__headline">
+          Mining-grade media.<br>Made by people who've<br>worked the mines.
+        </h1>
+        <p class="hero__sub">
+          Recruitment films, site progress, equipment capability and photography for the Australian mining sector.
+        </p>
+        <div class="hero__actions">
+          <a href="#contact" class="btn btn--primary">Book a Call</a>
+        </div>
+      </div>
+      <a href="#trusted-by" class="hero__scroll-cue" aria-label="Scroll down">
+        <span></span>
+      </a>
+    </section>
+
+    <!-- ============================================================
+         TRUSTED BY
+    ============================================================ -->
+    <section class="trusted-by" id="trusted-by">
+      <div class="container trusted-by__inner">
+        <p class="trusted-by__label">Trusted By</p>
+        <ul class="trusted-by__list">
+          <li>FMS Group</li>
+          <li aria-hidden="true" class="trusted-by__divider"></li>
+          <li>Safetylift Solutions</li>
+          <li aria-hidden="true" class="trusted-by__divider"></li>
+          <li>FMS Living</li>
+          <li aria-hidden="true" class="trusted-by__divider"></li>
+          <li>Primebatch</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SERVICES
+    ============================================================ -->
+    <section class="section services" id="services">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-eyebrow">What We Do</p>
+          <h2 class="section-title">End-to-End Production<br>for Heavy Industry</h2>
+          <p class="section-intro">
+            Recruitment, site, equipment and photography work for the Australian mining sector — captured by people who've worked the mines themselves.
+          </p>
+        </div>
+        <div class="services__grid">
+
+          <article class="service-card">
+            <div class="service-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <path d="M15 10l4.553-2.069A1 1 0 0121 8.87v6.26a1 1 0 01-1.447.9L15 14M4 8h11a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1V9a1 1 0 011-1z"/>
+              </svg>
+            </div>
+            <h3 class="service-card__title">Recruitment Videos</h3>
+            <p class="service-card__body">
+              We've built FMS's recruitment library — culture, lifestyle and on-the-ground footage that gets boots through the gate.
+            </p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><polyline points="9 22 9 12 15 12 15 22"/>
+              </svg>
+            </div>
+            <h3 class="service-card__title">Site & Equipment</h3>
+            <p class="service-card__body">
+              Drone, ground and cinema footage of operations, machinery and progress on site. Inducted, fit-tested, ready.
+            </p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"/><circle cx="12" cy="10" r="3"/>
+                <path d="M7 20.662V19a2 2 0 012-2h6a2 2 0 012 2v1.662"/>
+              </svg>
+            </div>
+            <h3 class="service-card__title">Photography</h3>
+            <p class="service-card__body">
+              Editorial-quality stills for marketing, recruitment, tenders and brand collateral.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         WORK — horizontal carousel
+    ============================================================ -->
+    <section class="section work" id="work">
+      <div class="container">
+        <div class="work__header">
+          <div>
+            <p class="section-eyebrow">Selected Projects</p>
+            <h2 class="section-title">Work That Speaks<br>for Itself</h2>
+          </div>
+          <div class="work__arrows">
+            <button class="work__arrow" id="work-prev" aria-label="Previous project">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M15 18l-6-6 6-6"/>
+              </svg>
+            </button>
+            <button class="work__arrow" id="work-next" aria-label="Next project">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M9 18l6-6-6-6"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="work__track" id="work-track">
+
+        <article class="work-card work-card--featured">
+          <div class="work-card__thumb work-card__thumb--placeholder">
+            <span class="work-card__play" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </span>
+            <div class="work-card__overlay">
+              <p class="work-card__tag">Mining</p>
+              <h3 class="work-card__title">Liebherr 9800 Shutdown</h3>
+              <p class="work-card__duration">04:49</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="work-card">
+          <div class="work-card__thumb work-card__thumb--placeholder">
+            <span class="work-card__play" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </span>
+            <div class="work-card__overlay">
+              <p class="work-card__tag">Heavy Industry</p>
+              <h3 class="work-card__title">PrimeBatch</h3>
+              <p class="work-card__duration">02:07</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="work-card">
+          <div class="work-card__thumb work-card__thumb--placeholder">
+            <span class="work-card__play" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </span>
+            <div class="work-card__overlay">
+              <p class="work-card__tag">Mining</p>
+              <h3 class="work-card__title">FMS Group Bowen Basin</h3>
+              <p class="work-card__duration">01:04</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="work-card">
+          <div class="work-card__thumb work-card__thumb--placeholder">
+            <span class="work-card__play" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </span>
+            <div class="work-card__overlay">
+              <p class="work-card__tag">Mining</p>
+              <h3 class="work-card__title">FMS Group W.A. Living</h3>
+              <p class="work-card__duration">01:03</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="work-card">
+          <div class="work-card__thumb work-card__thumb--placeholder">
+            <span class="work-card__play" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </span>
+            <div class="work-card__overlay">
+              <p class="work-card__tag">Tourism</p>
+              <h3 class="work-card__title">Ride Industries</h3>
+              <p class="work-card__duration">01:10</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="work-card">
+          <div class="work-card__thumb work-card__thumb--placeholder">
+            <span class="work-card__play" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </span>
+            <div class="work-card__overlay">
+              <p class="work-card__tag">Tourism</p>
+              <h3 class="work-card__title">PNG Dirt Bike Adventure</h3>
+              <p class="work-card__duration">00:59</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="work-card">
+          <div class="work-card__thumb work-card__thumb--placeholder">
+            <span class="work-card__play" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </span>
+            <div class="work-card__overlay">
+              <p class="work-card__tag">Mining</p>
+              <h3 class="work-card__title">Mining Work/Life Balance</h3>
+              <p class="work-card__duration">00:30</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="work-card">
+          <div class="work-card__thumb work-card__thumb--placeholder">
+            <span class="work-card__play" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </span>
+            <div class="work-card__overlay">
+              <p class="work-card__tag">Fitness</p>
+              <h3 class="work-card__title">Adventure Functional Fitness</h3>
+              <p class="work-card__duration">00:22</p>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         REVIEWS
+    ============================================================ -->
+    <section class="reviews" id="reviews">
+      <div class="container">
+
+        <div class="section-header reviews__header">
+          <p class="section-eyebrow">5-Star Reviews</p>
+          <h2 class="section-title">What Clients Say</h2>
+        </div>
+
+        <!-- Featured review -->
+        <div class="review-featured">
+          <blockquote class="review-featured__quote">
+            "Excellent quality outcomes and great to work with."
+          </blockquote>
+          <div class="review-featured__meta">
+            <p class="review-stars" aria-label="5 out of 5 stars">★★★★★</p>
+            <p class="review-featured__attribution">— FMS Group</p>
+            <a href="https://www.google.com/maps" class="review-via" target="_blank" rel="noopener noreferrer">via Google</a>
+          </div>
+        </div>
+
+        <!-- Two smaller cards -->
+        <div class="reviews-grid">
+
+          <article class="review-card">
+            <blockquote class="review-card__quote">
+              "Incredible, attentive service. The delivery was exactly what we were looking for, and more."
+            </blockquote>
+            <div class="review-card__footer">
+              <p class="review-stars" aria-label="5 out of 5 stars">★★★★★</p>
+              <p class="review-card__attribution">— Jon Bruce, Prime Batch</p>
+              <a href="https://www.google.com/maps" class="review-via" target="_blank" rel="noopener noreferrer">via Google</a>
+            </div>
+          </article>
+
+          <article class="review-card">
+            <blockquote class="review-card__quote">
+              "Very responsive and really easy to deal with. The vid turned out excellent! Highly recommend."
+            </blockquote>
+            <div class="review-card__footer">
+              <p class="review-stars" aria-label="5 out of 5 stars">★★★★★</p>
+              <p class="review-card__attribution">— Sam Day, Tourism Operator</p>
+              <a href="https://www.google.com/maps" class="review-via" target="_blank" rel="noopener noreferrer">via Google</a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         ABOUT
+    ============================================================ -->
+    <section class="section about" id="about">
+      <div class="container about__layout">
+        <div class="about__visual">
+          <div class="about__img-placeholder"></div>
+          <div class="about__accent-block"></div>
+        </div>
+        <div class="about__copy">
+          <p class="section-eyebrow">Who We Are</p>
+          <h2 class="section-title">Built in the Industry.<br>Built for It.</h2>
+          <p class="about__body">
+            Mets Media is Callum and Jordan — a two-person video and photography crew based in the Hunter Valley. Jordan was a diesel mechanic in the mines. Callum still works in mine emergency response. We know what a pre-start looks like, what TARPs are, and why your site supervisor doesn't have time to babysit a film crew. We turn up, capture what matters, and deliver work that pulls its weight.
+          </p>
+          <a href="#contact" class="btn btn--primary">Work With Us</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         WHY METS
+    ============================================================ -->
+    <section class="section why-mets" id="why-mets">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-eyebrow">Why Mets Media</p>
+          <h2 class="section-title">Not Just Another<br>Production Company</h2>
+          <p class="section-intro">
+            Mining-savvy, owner-operated, and ready to travel.
+          </p>
+        </div>
+        <div class="why__grid">
+
+          <div class="why-item">
+            <div class="why-item__number">01</div>
+            <h3 class="why-item__title">Hunter Valley Based</h3>
+            <p class="why-item__body">
+              Half-day reach to most NSW mining operations. No agency overhead, no long-haul travel costs to get us on site.
+            </p>
+          </div>
+
+          <div class="why-item">
+            <div class="why-item__number">02</div>
+            <h3 class="why-item__title">Travel Australia-Wide</h3>
+            <p class="why-item__body">
+              Fly-in crew with full kit. We've worked sites across the country and know how to slot into your rotation.
+            </p>
+          </div>
+
+          <div class="why-item">
+            <div class="why-item__number">03</div>
+            <h3 class="why-item__title">Owner-Operated</h3>
+            <p class="why-item__body">
+              You talk to the people holding the cameras. No account managers, no project handoffs, no diluted vision.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CONTACT
+    ============================================================ -->
+    <section class="section contact" id="contact">
+      <div class="container contact__layout">
+        <div class="contact__copy">
+          <p class="section-eyebrow">Get in Touch</p>
+          <h2 class="section-title">Let's Make<br>Something Great.</h2>
+          <p class="contact__body">
+            Tell us what you're working on. Could be a recruitment campaign, a site progress doc, an equipment hero shot — we'll come back with a plan and a quote within 24 hours.
+          </p>
+          <ul class="contact__details">
+            <li>
+              <span class="contact__label">Email</span>
+              <a href="mailto:info@metsmediahouse.com.au" class="contact__value">info@metsmediahouse.com.au</a>
+            </li>
+            <li>
+              <span class="contact__label">Phone</span>
+              <a href="tel:+61488931780" class="contact__value">0488 931 780</a>
+            </li>
+            <li>
+              <span class="contact__label">Instagram</span>
+              <a href="https://instagram.com/metsmediahouse" class="contact__value" target="_blank" rel="noopener noreferrer">@metsmediahouse</a>
+            </li>
+            <li>
+              <span class="contact__label">Based in</span>
+              <span class="contact__value">Hunter Valley, NSW</span>
+            </li>
+          </ul>
+        </div>
+        <form class="contact__form" id="contact-form" novalidate>
+          <div class="form-group">
+            <label for="name" class="form-label">Full Name</label>
+            <input type="text" id="name" name="name" class="form-input" placeholder="Jane Smith" required>
+          </div>
+          <div class="form-group">
+            <label for="company" class="form-label">Company</label>
+            <input type="text" id="company" name="company" class="form-input" placeholder="Acme Mining Co.">
+          </div>
+          <div class="form-group">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" id="email" name="email" class="form-input" placeholder="jane@acmemining.com" required>
+          </div>
+          <div class="form-group">
+            <label for="message" class="form-label">Tell Us About Your Project</label>
+            <textarea id="message" name="message" class="form-input form-input--textarea" placeholder="Give us a brief overview — what are you trying to achieve?" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="btn btn--primary btn--full">Send Enquiry</button>
+          <p class="form-notice" id="form-notice" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
   </main>
 
-  <footer>Hunter Valley, NSW</footer>
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="footer">
+    <div class="container footer__layout">
+      <a href="#hero" class="footer__logo" aria-label="Back to top">
+        <img src="images/mets-logo.png" alt="Mets Media" class="footer__logo-img">
+      </a>
+      <nav class="footer__nav" aria-label="Footer navigation">
+        <a href="#services">Services</a>
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="footer__legal">
+        <p class="footer__copy">&copy; <span id="year"></span> Mets Media. All rights reserved.</p>
+        <p class="footer__abn">ABN 17 130 640 791 629</p>
+      </div>
+    </div>
+  </footer>
 
+  <script src="js/main.js"></script>
 </body>
 </html>
