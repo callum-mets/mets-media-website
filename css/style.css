@@ -128,7 +128,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   position: fixed;
   top: 0;
   inset-inline: 0;
-  z-index: 100;
+  z-index: 1001;
   display: flex;
   align-items: center;
   padding-block: 24px;
@@ -948,18 +948,21 @@ a.contact__value:hover { color: var(--cream); }
   .site-header { min-height: 104px; padding-block: 24px; }
   .nav__logo img,
   .nav__logo-img { height: 56px !important; max-height: none !important; width: auto !important; max-width: none !important; }
-  .nav__toggle { display: flex; }
+  .nav__toggle { display: flex; position: relative; z-index: 1001; }
 
   .nav__links {
     position: fixed;
-    inset: var(--nav-h) 0 0;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
     flex-direction: column;
-    align-items: stretch;
+    align-items: center;
+    justify-content: center;
     gap: 0;
-    background: rgba(0, 0, 0, 0.97);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    padding: 1.5rem var(--gutter);
+    background: #000000;
+    z-index: 1000;
+    padding: 0;
     transform: translateY(-100%);
     opacity: 0;
     pointer-events: none;
@@ -971,21 +974,24 @@ a.contact__value:hover { color: var(--cream); }
     pointer-events: auto;
   }
   .nav__link {
-    padding: 1rem 0;
-    font-size: 1rem;
-    border-bottom: 1px solid var(--cream-border);
+    padding: 0;
+    margin: 1.5rem 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--cream);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border-bottom: none;
     border-radius: 0;
   }
-  .nav__link--cta {
-    margin-left: 0;
-    margin-top: 1rem;
-    text-align: center;
-    border-radius: 999px;
-    border-bottom: none;
-    padding: 0.85rem 2rem;
-  }
+  .nav__link--cta { display: none; }
 
-  /* Hero — clamp handles mobile scaling, no override needed */
+  /* Hero */
+  .hero__headline {
+    max-width: 100%;
+    font-size: clamp(1.75rem, 8vw, 2.5rem);
+  }
+  .hero__scroll-cue { display: none; }
 
   /* Trusted by */
   .trusted-by__inner { gap: 1rem; }
