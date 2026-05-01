@@ -419,7 +419,7 @@
             </li>
           </ul>
         </div>
-        <form class="contact__form" id="contact-form" novalidate>
+        <form class="contact__form" id="contact-form" action="https://formspree.io/f/xqenkvnk" method="POST" novalidate>
           <div class="form-group">
             <label for="name" class="form-label">Full Name</label>
             <input type="text" id="name" name="name" class="form-input" placeholder="Jane Smith" required>
@@ -436,9 +436,17 @@
             <label for="message" class="form-label">Tell Us About Your Project</label>
             <textarea id="message" name="message" class="form-input form-input--textarea" placeholder="Give us a brief overview — what are you trying to achieve?" rows="5" required></textarea>
           </div>
-          <button type="submit" class="btn btn--primary btn--full">Send Enquiry</button>
-          <p class="form-notice" id="form-notice" aria-live="polite"></p>
+          <input type="text" name="_gotcha" style="display:none !important" tabindex="-1" autocomplete="off">
+          <input type="hidden" name="_subject" value="New enquiry from metsmediahouse.com.au">
+          <button type="submit" class="btn btn--primary btn--full">SEND ENQUIRY</button>
         </form>
+        <div id="form-success" class="form-success" hidden>
+          <h3>Thanks — your enquiry's in.</h3>
+          <p>We'll get back to you within 24 hours.</p>
+        </div>
+        <div id="form-error" class="form-error" hidden>
+          <p>Something went wrong. Please email us directly at info@metsmediahouse.com.au.</p>
+        </div>
       </div>
     </section>
 

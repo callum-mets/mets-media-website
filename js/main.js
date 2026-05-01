@@ -83,39 +83,42 @@
     });
   }
 
-  /* ---- CONTACT FORM: basic client-side handling ------------- */
-  const form   = document.getElementById('contact-form');
-  const notice = document.getElementById('form-notice');
+  /* ---- CONTACT FORM: Formspree AJAX submission -------------- */
+  const form      = document.getElementById('contact-form');
+  const successEl = document.getElementById('form-success');
+  const errorEl   = document.getElementById('form-error');
 
   if (form) {
-    form.addEventListener('submit', e => {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
 
-      const required = form.querySelectorAll('[required]');
-      let valid = true;
-      required.forEach(field => {
-        if (!field.value.trim()) {
-          field.style.borderColor = 'rgba(224, 112, 112, 0.6)';
-          valid = false;
+      errorEl.hidden = true;
+
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const originalBtnText = submitBtn.textContent;
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'SENDING...';
+
+      try {
+        const formData = new FormData(form);
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+          form.hidden = true;
+          successEl.hidden = false;
+          successEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
         } else {
-          field.style.borderColor = '';
+          throw new Error('Submission failed');
         }
-      });
-
-      if (!valid) {
-        notice.textContent = 'Please fill in all required fields.';
-        notice.className = 'form-notice error';
-        return;
+      } catch (err) {
+        errorEl.hidden = false;
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalBtnText;
       }
-
-      /* Replace with your actual form submission (Netlify, Formspree, etc.) */
-      notice.textContent = "Thanks — we'll be in touch shortly.";
-      notice.className = 'form-notice success';
-      form.reset();
-    });
-
-    form.querySelectorAll('.form-input').forEach(field => {
-      field.addEventListener('input', () => { field.style.borderColor = ''; });
     });
   }
 
