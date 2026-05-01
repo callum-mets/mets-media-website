@@ -187,9 +187,11 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 }
 .nav__link--cta:hover { background: #ffffff; }
 
-/* Hamburger */
+/* Hamburger — visible by default; hidden on wide screens via min-width query below */
 .nav__toggle {
-  display: none;
+  display: flex;
+  position: relative;
+  z-index: 1001;
   flex-direction: column;
   justify-content: center;
   gap: 5px;
@@ -962,7 +964,6 @@ a.contact__value:hover { color: var(--cream); }
   .site-header { min-height: 104px; padding-block: 24px; }
   .nav__logo img,
   .nav__logo-img { height: 56px !important; max-height: none !important; width: auto !important; max-width: none !important; }
-  .nav__toggle { display: flex; position: relative; z-index: 1001; }
 
   .nav__links {
     position: fixed;
@@ -999,6 +1000,38 @@ a.contact__value:hover { color: var(--cream); }
     border-radius: 0;
   }
   .nav__link--cta { display: none; }
+}
+
+/* Desktop nav — explicitly hide hamburger and show link row at 1025px+ */
+@media (min-width: 1025px) {
+  .nav__toggle { display: none; }
+  .nav__links {
+    position: static;
+    width: auto;
+    height: auto;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.15rem;
+    background: none;
+    z-index: auto;
+    padding: 0;
+    transform: none;
+    opacity: 1;
+    pointer-events: auto;
+    transition: none;
+  }
+  .nav__link {
+    padding: 0.45rem 0.9rem;
+    margin: 0;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--cream-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    border-radius: 999px;
+  }
+  .nav__link--cta { display: flex; }
 }
 
 /* Mobile — ≤ 768px */
