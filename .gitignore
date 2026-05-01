@@ -1,0 +1,12 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Large media files (add manually when ready to deploy)
+videos/*.mp4
+videos/*.mov
+
+# Editor
+.vscode/
+.idea/
