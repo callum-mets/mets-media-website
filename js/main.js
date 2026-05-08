@@ -83,6 +83,65 @@
     });
   }
 
+  /* ---- VIDEO MODAL ------------------------------------------ */
+  const modal      = document.getElementById('video-modal');
+  const modalFrame = document.getElementById('video-modal-frame');
+  const modalTitle = document.getElementById('video-modal-title');
+  const videoBtns  = document.querySelectorAll('.work-card__btn[data-youtube-id]');
+
+  if (modal && modalFrame && videoBtns.length) {
+    let lastTrigger = null;
+
+    function openModal(youtubeId, title, trigger) {
+      lastTrigger = trigger || null;
+      modalTitle.textContent = title || '';
+
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://www.youtube.com/embed/${youtubeId}?autoplay=1&rel=0&modestbranding=1`;
+      iframe.title = title || 'Video player';
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      iframe.allowFullscreen = true;
+      modalFrame.appendChild(iframe);
+
+      modal.classList.add('is-open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('is-modal-open');
+
+      const closeBtn = modal.querySelector('.video-modal__close');
+      if (closeBtn) closeBtn.focus();
+    }
+
+    function closeModal() {
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('is-modal-open');
+      modalFrame.innerHTML = '';
+      modalTitle.textContent = '';
+      if (lastTrigger && typeof lastTrigger.focus === 'function') {
+        lastTrigger.focus();
+      }
+      lastTrigger = null;
+    }
+
+    videoBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id    = btn.getAttribute('data-youtube-id');
+        const title = btn.getAttribute('data-title') || '';
+        if (id) openModal(id, title, btn);
+      });
+    });
+
+    modal.querySelectorAll('[data-modal-close]').forEach(el => {
+      el.addEventListener('click', closeModal);
+    });
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && modal.classList.contains('is-open')) {
+        closeModal();
+      }
+    });
+  }
+
   /* ---- CONTACT FORM: Formspree AJAX submission -------------- */
   const form      = document.getElementById('contact-form');
   const successEl = document.getElementById('form-success');

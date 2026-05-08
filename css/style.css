@@ -485,6 +485,160 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   line-height: 1.3;
 }
 
+/* Card button — when card has a video, the thumb becomes a clickable button */
+.work-card__btn {
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  background: none;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.work-card__btn:focus-visible {
+  outline: 2px solid var(--cream);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+.work-card__btn .work-card__thumb {
+  transition: transform 0.3s ease;
+}
+.work-card__btn:hover .work-card__thumb {
+  transform: translateY(-2px);
+}
+
+.work-card__play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.55);
+  border: 1px solid var(--cream-border);
+  color: var(--cream);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  opacity: 0;
+  transition: opacity 0.25s ease, transform 0.25s ease, background 0.25s ease;
+  pointer-events: none;
+}
+.work-card__play svg {
+  width: 26px;
+  height: 26px;
+  margin-left: 3px; /* visual centering of the play triangle */
+}
+.work-card__btn:hover .work-card__play,
+.work-card__btn:focus-visible .work-card__play {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.05);
+  background: rgba(0, 0, 0, 0.7);
+}
+@media (hover: none) {
+  .work-card__play { opacity: 1; }
+}
+
+/* ---- VIDEO MODAL ------------------------------------------- */
+.video-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(1rem, 4vw, 3rem);
+}
+.video-modal.is-open {
+  display: flex;
+}
+.video-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.92);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  animation: video-modal-fade 0.2s ease-out;
+}
+.video-modal__inner {
+  position: relative;
+  width: 100%;
+  max-width: 1280px;
+  animation: video-modal-rise 0.25s ease-out;
+}
+.video-modal__close {
+  position: absolute;
+  top: -3rem;
+  right: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid var(--cream-border);
+  color: var(--cream);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+.video-modal__close:hover {
+  background: var(--cream-glow);
+  border-color: var(--cream);
+}
+.video-modal__close svg {
+  width: 18px;
+  height: 18px;
+}
+.video-modal__frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  border: 1px solid var(--cream-border);
+  overflow: hidden;
+}
+.video-modal__frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.video-modal__title {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--cream-muted);
+}
+@media (max-width: 600px) {
+  .video-modal__close {
+    top: auto;
+    bottom: -3rem;
+    right: 50%;
+    transform: translateX(50%);
+  }
+}
+@keyframes video-modal-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes video-modal-rise {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+body.is-modal-open {
+  overflow: hidden;
+}
+
 /* ---- REVIEWS ----------------------------------------------- */
 .reviews {
   padding-block: clamp(5rem, 10vw, 8rem);

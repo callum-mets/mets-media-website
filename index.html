@@ -161,12 +161,17 @@
       <div class="work__track" id="work-track">
 
         <article class="work-card">
-          <div class="work-card__thumb">
-            <img src="images/work/png-dirt-bike.jpg" alt="PNG Dirt Bike — recruitment film for FMS Group" loading="lazy">
-            <div class="work-card__overlay">
-              <h3 class="work-card__title">PNG Dirt Bike</h3>
+          <button type="button" class="work-card__btn" data-youtube-id="oePbBUT1pz8" data-title="PNG Dirt Bike — FMS Group Team Trip" aria-label="Play PNG Dirt Bike video">
+            <div class="work-card__thumb">
+              <img src="images/work/png-dirt-bike.jpg" alt="PNG Dirt Bike — recruitment film for FMS Group" loading="lazy">
+              <div class="work-card__overlay">
+                <h3 class="work-card__title">PNG Dirt Bike</h3>
+              </div>
+              <span class="work-card__play" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              </span>
             </div>
-          </div>
+          </button>
         </article>
 
         <article class="work-card">
@@ -433,6 +438,22 @@
       </div>
     </div>
   </footer>
+
+  <!-- ============================================================
+       VIDEO MODAL
+  ============================================================ -->
+  <div class="video-modal" id="video-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="video-modal-title">
+    <div class="video-modal__backdrop" data-modal-close></div>
+    <div class="video-modal__inner">
+      <button type="button" class="video-modal__close" data-modal-close aria-label="Close video">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M18 6L6 18M6 6l12 12"/>
+        </svg>
+      </button>
+      <div class="video-modal__frame" id="video-modal-frame"></div>
+      <p class="video-modal__title" id="video-modal-title"></p>
+    </div>
+  </div>
 
   <script src="js/main.js"></script>
 </body>
