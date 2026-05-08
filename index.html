@@ -68,33 +68,12 @@
       <video class="hero-video" autoplay muted loop playsinline poster="images/hero/hero-poster.jpg" preload="metadata">
         <source src="videos/hero-loop.mp4" type="video/mp4">
       </video>
-      <div class="hero-overlay"></div>
-      <div class="hero__content container">
-        <h1 class="hero__headline">We lived it. Now we capture it.</h1>
-        <div class="hero__actions">
-          <a href="#contact" class="btn btn--primary">Book a Call</a>
-        </div>
-      </div>
-      <a href="#trusted-by" class="hero__scroll-cue" aria-label="Scroll down">
-        <span></span>
-      </a>
     </section>
 
-    <!-- ============================================================
-         TRUSTED BY
-    ============================================================ -->
-    <section class="trusted-by" id="trusted-by">
-      <div class="container trusted-by__inner">
-        <p class="trusted-by__label">Trusted By</p>
-        <ul class="trusted-by__list">
-          <li>FMS Group</li>
-          <li aria-hidden="true" class="trusted-by__divider"></li>
-          <li>Safetylift Solutions</li>
-          <li aria-hidden="true" class="trusted-by__divider"></li>
-          <li>FMS Living</li>
-          <li aria-hidden="true" class="trusted-by__divider"></li>
-          <li>Primebatch</li>
-        </ul>
+    <section class="hero-message">
+      <div class="hero-message__inner">
+        <h1 class="hero-message__headline">We lived it. Now we capture it.</h1>
+        <a href="#contact" class="hero-message__cta">BOOK A CALL</a>
       </div>
     </section>
 
@@ -107,7 +86,7 @@
           <p class="section-eyebrow">What We Do</p>
           <h2 class="section-title">End-to-End Production<br>for Heavy Industry</h2>
           <p class="section-intro">
-            Recruitment, site, equipment and photography work for the Australian mining sector — captured by people who've worked the mines themselves.
+            Videography and photography services for the Australian mining sector — captured by people with years of mining industry experience.
           </p>
         </div>
         <div class="services__grid">
@@ -118,21 +97,22 @@
                 <path d="M15 10l4.553-2.069A1 1 0 0121 8.87v6.26a1 1 0 01-1.447.9L15 14M4 8h11a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1V9a1 1 0 011-1z"/>
               </svg>
             </div>
-            <h3 class="service-card__title">Recruitment Videos</h3>
+            <h3 class="service-card__title">Cinematic Videos</h3>
             <p class="service-card__body">
-              We've built FMS's recruitment library — culture, lifestyle and on-the-ground footage that gets boots through the gate.
+              Full-scale production for brand films, site documentation, safety content and more. Built for heavy industry — by people who've worked in it.
             </p>
           </article>
 
           <article class="service-card">
             <div class="service-card__icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><polyline points="9 22 9 12 15 12 15 22"/>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="6" y="2" width="12" height="20" rx="2" ry="2"></rect>
+                <line x1="11" y1="18" x2="13" y2="18"></line>
               </svg>
             </div>
-            <h3 class="service-card__title">Site & Equipment</h3>
+            <h3 class="service-card__title">Reels</h3>
             <p class="service-card__body">
-              Drone, ground and cinema footage of operations, machinery and progress on site. Inducted, fit-tested, ready.
+              Short-form content engineered for LinkedIn and Instagram. Recruitment, culture, equipment and site progress — designed to demand attention.
             </p>
           </article>
 
@@ -145,7 +125,7 @@
             </div>
             <h3 class="service-card__title">Photography</h3>
             <p class="service-card__body">
-              Editorial-quality stills for marketing, recruitment, tenders and brand collateral.
+              Editorial-grade photography for tenders, marketing and recruitment collateral. Camera-ready from day one on site.
             </p>
           </article>
 
@@ -180,110 +160,78 @@
 
       <div class="work__track" id="work-track">
 
-        <article class="work-card work-card--featured">
-          <div class="work-card__thumb work-card__thumb--placeholder">
-            <span class="work-card__play" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-            </span>
+        <article class="work-card">
+          <div class="work-card__thumb">
+            <img src="images/work/png-dirt-bike.jpg" alt="PNG Dirt Bike — recruitment film for FMS Group" loading="lazy">
             <div class="work-card__overlay">
-              <p class="work-card__tag">Mining</p>
+              <h3 class="work-card__title">PNG Dirt Bike</h3>
+            </div>
+          </div>
+        </article>
+
+        <article class="work-card">
+          <div class="work-card__thumb">
+            <img src="images/work/fms-bowen-basin.jpg" alt="FMS Bowen Basin — site documentation for FMS Group" loading="lazy">
+            <div class="work-card__overlay">
+              <h3 class="work-card__title">FMS Bowen Basin</h3>
+            </div>
+          </div>
+        </article>
+
+        <article class="work-card">
+          <div class="work-card__thumb">
+            <img src="images/work/fms-wa-living.jpg" alt="FMS WA Living — lifestyle film for FMS Group" loading="lazy">
+            <div class="work-card__overlay">
+              <h3 class="work-card__title">FMS WA Living</h3>
+            </div>
+          </div>
+        </article>
+
+        <article class="work-card">
+          <div class="work-card__thumb">
+            <img src="images/work/liebherr-9800-shutdown.jpg" alt="Liebherr 9800 Shutdown — equipment documentation for FMS Group" loading="lazy">
+            <div class="work-card__overlay">
               <h3 class="work-card__title">Liebherr 9800 Shutdown</h3>
-              <p class="work-card__duration">04:49</p>
             </div>
           </div>
         </article>
 
         <article class="work-card">
-          <div class="work-card__thumb work-card__thumb--placeholder">
-            <span class="work-card__play" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-            </span>
+          <div class="work-card__thumb">
+            <img src="images/work/primebatch.jpg" alt="PrimeBatch — brand film for concrete batching operations" loading="lazy">
             <div class="work-card__overlay">
-              <p class="work-card__tag">Heavy Industry</p>
               <h3 class="work-card__title">PrimeBatch</h3>
-              <p class="work-card__duration">02:07</p>
             </div>
           </div>
         </article>
 
         <article class="work-card">
-          <div class="work-card__thumb work-card__thumb--placeholder">
-            <span class="work-card__play" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-            </span>
+          <div class="work-card__thumb">
+            <img src="images/work/safetylift-solutions.jpg" alt="Safetylift Solutions — brand film for heavy lift jacking systems" loading="lazy">
             <div class="work-card__overlay">
-              <p class="work-card__tag">Mining</p>
-              <h3 class="work-card__title">FMS Group Bowen Basin</h3>
-              <p class="work-card__duration">01:04</p>
+              <h3 class="work-card__title">Safetylift Solutions</h3>
             </div>
           </div>
         </article>
 
-        <article class="work-card">
-          <div class="work-card__thumb work-card__thumb--placeholder">
-            <span class="work-card__play" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-            </span>
-            <div class="work-card__overlay">
-              <p class="work-card__tag">Mining</p>
-              <h3 class="work-card__title">FMS Group W.A. Living</h3>
-              <p class="work-card__duration">01:03</p>
-            </div>
-          </div>
-        </article>
+      </div>
+    </section>
 
-        <article class="work-card">
-          <div class="work-card__thumb work-card__thumb--placeholder">
-            <span class="work-card__play" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-            </span>
-            <div class="work-card__overlay">
-              <p class="work-card__tag">Tourism</p>
-              <h3 class="work-card__title">Ride Industries</h3>
-              <p class="work-card__duration">01:10</p>
-            </div>
-          </div>
-        </article>
-
-        <article class="work-card">
-          <div class="work-card__thumb work-card__thumb--placeholder">
-            <span class="work-card__play" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-            </span>
-            <div class="work-card__overlay">
-              <p class="work-card__tag">Tourism</p>
-              <h3 class="work-card__title">PNG Dirt Bike Adventure</h3>
-              <p class="work-card__duration">00:59</p>
-            </div>
-          </div>
-        </article>
-
-        <article class="work-card">
-          <div class="work-card__thumb work-card__thumb--placeholder">
-            <span class="work-card__play" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-            </span>
-            <div class="work-card__overlay">
-              <p class="work-card__tag">Mining</p>
-              <h3 class="work-card__title">Mining Work/Life Balance</h3>
-              <p class="work-card__duration">00:30</p>
-            </div>
-          </div>
-        </article>
-
-        <article class="work-card">
-          <div class="work-card__thumb work-card__thumb--placeholder">
-            <span class="work-card__play" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-            </span>
-            <div class="work-card__overlay">
-              <p class="work-card__tag">Fitness</p>
-              <h3 class="work-card__title">Adventure Functional Fitness</h3>
-              <p class="work-card__duration">00:22</p>
-            </div>
-          </div>
-        </article>
-
+    <!-- ============================================================
+         TRUSTED BY
+    ============================================================ -->
+    <section class="trusted-by" id="trusted-by">
+      <div class="container trusted-by__inner">
+        <p class="trusted-by__label">Clients</p>
+        <ul class="trusted-by__list">
+          <li>FMS Group</li>
+          <li aria-hidden="true" class="trusted-by__divider"></li>
+          <li>Safetylift Solutions</li>
+          <li aria-hidden="true" class="trusted-by__divider"></li>
+          <li>FMS Living</li>
+          <li aria-hidden="true" class="trusted-by__divider"></li>
+          <li>Primebatch</li>
+        </ul>
       </div>
     </section>
 
