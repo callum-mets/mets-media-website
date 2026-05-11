@@ -57,30 +57,59 @@
       track.scrollBy({ left: cardScrollWidth(), behavior: 'smooth' });
     });
 
-    /* Drag-to-scroll on desktop */
+    /* Drag-to-scroll — pointer events, with click-vs-drag threshold */
     let isDown = false;
-    let startX, scrollLeft;
+    let didDrag = false;
+    let startX = 0;
+    let startScrollLeft = 0;
+    const DRAG_THRESHOLD = 5; // px before we treat as drag
 
-    track.addEventListener('mousedown', e => {
+    track.addEventListener('pointerdown', e => {
+      if (e.button !== 0) return; // primary button only
+      if (e.pointerType === 'touch') return; // native handles touch — smoother momentum
       isDown = true;
-      track.classList.add('is-dragging');
-      startX = e.pageX - track.offsetLeft;
-      scrollLeft = track.scrollLeft;
+      didDrag = false;
+      startX = e.clientX;
+      startScrollLeft = track.scrollLeft;
     });
-    track.addEventListener('mouseleave', () => {
-      isDown = false;
-      track.classList.remove('is-dragging');
-    });
-    track.addEventListener('mouseup', () => {
-      isDown = false;
-      track.classList.remove('is-dragging');
-    });
-    track.addEventListener('mousemove', e => {
+
+    track.addEventListener('pointermove', e => {
       if (!isDown) return;
-      e.preventDefault();
-      const x = e.pageX - track.offsetLeft;
-      track.scrollLeft = scrollLeft - (x - startX);
+      const dx = e.clientX - startX;
+      if (!didDrag && Math.abs(dx) > DRAG_THRESHOLD) {
+        didDrag = true;
+        track.classList.add('is-dragging');
+        try { track.setPointerCapture(e.pointerId); } catch (_) {}
+      }
+      if (didDrag) {
+        e.preventDefault();
+        track.scrollLeft = startScrollLeft - dx;
+      }
     });
+
+    function endDrag(e) {
+      if (!isDown) return;
+      isDown = false;
+      track.classList.remove('is-dragging');
+      if (e && e.pointerId !== undefined && track.hasPointerCapture && track.hasPointerCapture(e.pointerId)) {
+        track.releasePointerCapture(e.pointerId);
+      }
+    }
+    track.addEventListener('pointerup', endDrag);
+    track.addEventListener('pointercancel', endDrag);
+    track.addEventListener('pointerleave', endDrag);
+
+    // Suppress native HTML5 drag of imgs/links inside the track
+    track.addEventListener('dragstart', e => e.preventDefault());
+
+    // If a drag happened, swallow the click so the modal doesn't open
+    track.addEventListener('click', e => {
+      if (didDrag) {
+        e.preventDefault();
+        e.stopPropagation();
+        didDrag = false;
+      }
+    }, true); // capture phase, beats the modal-opener handler
   }
 
   /* ---- VIDEO MODAL ------------------------------------------ */
@@ -97,9 +126,10 @@
       modalTitle.textContent = title || '';
 
       const iframe = document.createElement('iframe');
-      iframe.src = `https://www.youtube.com/embed/${youtubeId}?autoplay=1&rel=0&modestbranding=1`;
+      iframe.src = `https://www.youtube-nocookie.com/embed/${youtubeId}?autoplay=1&rel=0&modestbranding=1&playsinline=1`;
       iframe.title = title || 'Video player';
       iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      iframe.referrerPolicy = 'strict-origin-when-cross-origin';
       iframe.allowFullscreen = true;
       modalFrame.appendChild(iframe);
 
@@ -123,11 +153,17 @@
       lastTrigger = null;
     }
 
+    /* TEMP: music licensing blocks YouTube embeds (Error 153).
+       Until Musicbed channel whitelist is sorted with Jordy, open videos
+       in a new tab on youtube.com instead of using the in-page modal.
+       To revert: restore the openModal call below. */
     videoBtns.forEach(btn => {
       btn.addEventListener('click', () => {
-        const id    = btn.getAttribute('data-youtube-id');
-        const title = btn.getAttribute('data-title') || '';
-        if (id) openModal(id, title, btn);
+        const id = btn.getAttribute('data-youtube-id');
+        if (!id) return;
+        window.open(`https://www.youtube.com/watch?v=${id}`, '_blank', 'noopener,noreferrer');
+        // const title = btn.getAttribute('data-title') || '';
+        // openModal(id, title, btn);
       });
     });
 
@@ -195,7 +231,7 @@
   );
 
   document.querySelectorAll(
-    '.service-card, .work-card, .why-item, .glance__stat, .about__copy, .contact__copy'
+    '.service-card, .capv5__tile, .work-card, .why-item, .glance__stat, .about__copy, .contact__copy'
   ).forEach((el, i) => {
     el.style.setProperty('--delay', `${i * 55}ms`);
     el.classList.add('fade-up');
