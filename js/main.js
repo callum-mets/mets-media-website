@@ -57,7 +57,9 @@
       track.scrollBy({ left: cardScrollWidth(), behavior: 'smooth' });
     });
 
-    /* Drag-to-scroll — pointer events, with click-vs-drag threshold */
+    /* Drag-to-scroll — pointer events, with click-vs-drag threshold.
+       Listeners use CAPTURE phase so they fire before any button child
+       handlers — keeps drag working even when card root is a <button>. */
     let isDown = false;
     let didDrag = false;
     let startX = 0;
@@ -71,7 +73,7 @@
       didDrag = false;
       startX = e.clientX;
       startScrollLeft = track.scrollLeft;
-    });
+    }, true);
 
     track.addEventListener('pointermove', e => {
       if (!isDown) return;
@@ -85,7 +87,7 @@
         e.preventDefault();
         track.scrollLeft = startScrollLeft - dx;
       }
-    });
+    }, true);
 
     function endDrag(e) {
       if (!isDown) return;
@@ -95,21 +97,33 @@
         track.releasePointerCapture(e.pointerId);
       }
     }
-    track.addEventListener('pointerup', endDrag);
-    track.addEventListener('pointercancel', endDrag);
-    track.addEventListener('pointerleave', endDrag);
+    track.addEventListener('pointerup', endDrag, true);
+    track.addEventListener('pointercancel', endDrag, true);
+    track.addEventListener('pointerleave', endDrag, true);
 
     // Suppress native HTML5 drag of imgs/links inside the track
     track.addEventListener('dragstart', e => e.preventDefault());
 
-    // If a drag happened, swallow the click so the modal doesn't open
+    // If a drag happened, swallow the click so the video doesn't open
     track.addEventListener('click', e => {
       if (didDrag) {
         e.preventDefault();
         e.stopPropagation();
         didDrag = false;
       }
-    }, true); // capture phase, beats the modal-opener handler
+    }, true); // capture phase, beats the video-opener handler
+
+    /* Start the carousel scrolled to the middle so the user can drag
+       in either direction. Wait for images to load so scrollWidth is final. */
+    function centerTrack() {
+      const max = track.scrollWidth - track.clientWidth;
+      if (max > 0) track.scrollLeft = max / 2;
+    }
+    if (document.readyState === 'complete') {
+      centerTrack();
+    } else {
+      window.addEventListener('load', centerTrack, { once: true });
+    }
   }
 
   /* ---- VIDEO MODAL ------------------------------------------ */

@@ -558,7 +558,8 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 .work__track::-webkit-scrollbar { display: none; }
 .work__track.is-dragging { cursor: grabbing; scroll-snap-type: none; }
 .work__track img,
-.work__track .work-card__thumb {
+.work__track .work-card__thumb,
+.work__track .work-card__btn {
   -webkit-user-drag: none;
   user-select: none;
   -webkit-user-select: none;
