@@ -10,3 +10,4 @@ videos/*.mov
 # Editor
 .vscode/
 .idea/
+.claude/
