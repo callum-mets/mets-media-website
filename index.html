@@ -5,24 +5,73 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Page metadata -->
-  <title>We lived it. Now we capture it.</title>
+  <title>Mining Videography &amp; Photography | Mets Media — Hunter Valley, NSW</title>
   <meta name="description" content="Videography &amp; photography for Australian mining. Recruitment films, site progress, equipment capability and photography by people who've worked the mines. Hunter Valley based.">
 
   <!-- Open Graph (Facebook, LinkedIn, iMessage, Slack, WhatsApp, etc.) -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://metsmediahouse.com.au/">
-  <meta property="og:title" content="We lived it. Now we capture it.">
-  <meta property="og:description" content="Videography &amp; photography for Australian mining. Recruitment films, site progress, equipment capability and photography by people who've worked the mines. Hunter Valley based.">
+  <meta property="og:title" content="Mining Videography &amp; Photography | Mets Media House">
+  <meta property="og:description" content="Cinematic videography &amp; photography for Australian mining. Recruitment films, site progress, equipment capability and photography by people who've worked the mines. Hunter Valley based.">
   <meta property="og:image" content="https://metsmediahouse.com.au/images/og/og-image.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:site_name" content="Mets Media">
+  <meta property="og:site_name" content="Mets Media House">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="We lived it. Now we capture it.">
-  <meta name="twitter:description" content="Videography &amp; photography for Australian mining. Recruitment films, site progress, equipment capability and photography by people who've worked the mines. Hunter Valley based.">
+  <meta name="twitter:title" content="Mining Videography &amp; Photography | Mets Media House">
+  <meta name="twitter:description" content="Cinematic videography &amp; photography for Australian mining. Recruitment films, site progress, equipment capability and photography by people who've worked the mines. Hunter Valley based.">
   <meta name="twitter:image" content="https://metsmediahouse.com.au/images/og/og-image.jpg">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://metsmediahouse.com.au/">
+
+  <!-- LocalBusiness structured data — connects this site to Google Business Profile -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "@id": "https://metsmediahouse.com.au/#business",
+    "name": "Mets Media House",
+    "alternateName": "Mets Media",
+    "description": "Cinematic videography and photography for the Australian mining sector. Recruitment films, site progress, equipment capability and photography by former miners.",
+    "url": "https://metsmediahouse.com.au/",
+    "logo": "https://metsmediahouse.com.au/brand/primary/mets-wordmark-white.png",
+    "image": "https://metsmediahouse.com.au/images/og/og-image.jpg",
+    "telephone": "+61488931780",
+    "email": "info@metsmediahouse.com.au",
+    "priceRange": "$$",
+    "address": {
+      "@type": "PostalAddress",
+      "addressRegion": "NSW",
+      "addressCountry": "AU"
+    },
+    "areaServed": [
+      { "@type": "AdministrativeArea", "name": "Hunter Valley, NSW" },
+      { "@type": "AdministrativeArea", "name": "New South Wales" },
+      { "@type": "AdministrativeArea", "name": "Queensland" },
+      { "@type": "AdministrativeArea", "name": "Western Australia" },
+      { "@type": "Country", "name": "Australia" }
+    ],
+    "serviceType": [
+      "Mining videography",
+      "Mining photography",
+      "Recruitment films",
+      "Brand films",
+      "Site documentation",
+      "Drone and aerial footage"
+    ],
+    "founder": [
+      { "@type": "Person", "name": "Jordan" },
+      { "@type": "Person", "name": "Callum McTague" }
+    ],
+    "sameAs": [
+      "https://www.instagram.com/metsmediahouse",
+      "https://www.google.com/maps/place/?cid=7516819737276767067"
+    ]
+  }
+  </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -52,7 +101,6 @@
         <li><a href="#services" class="nav__link">Services</a></li>
         <li><a href="#work"     class="nav__link">Work</a></li>
         <li><a href="#about"    class="nav__link">About</a></li>
-        <li><a href="#why-mets" class="nav__link">Why Mets</a></li>
         <li><a href="#contact"  class="nav__link">Contact</a></li>
         <li><a href="#contact"  class="nav__link nav__link--cta">Get in Touch</a></li>
       </ul>
@@ -68,7 +116,10 @@
       <video class="hero-video" autoplay muted loop playsinline poster="images/hero/hero-poster.jpg" preload="metadata">
         <source src="videos/hero-loop.mp4" type="video/mp4">
       </video>
-      <a href="#contact" class="hero__cta">GET IN TOUCH</a>
+      <div class="hero__scrim" aria-hidden="true"></div>
+      <div class="hero__content">
+        <h1 class="hero__title">Cinematic videography &amp; photography for Australian mining.</h1>
+      </div>
     </section>
 
     <!-- ============================================================
@@ -181,6 +232,20 @@
         </article>
 
         <article class="work-card">
+          <button type="button" class="work-card__btn" data-youtube-id="N361m34XfcM" data-title="Swimming with Wild Dolphins in Nelson Bay — Dolphin Swim Australia" aria-label="Play Dolphin Swim Australia video">
+            <div class="work-card__thumb">
+              <img src="images/work/dolphin-swim-australia.jpg" alt="Dolphin Swim Australia — 4K tourism film, Nelson Bay" loading="lazy">
+              <div class="work-card__overlay">
+                <h3 class="work-card__title">Dolphin Swim Australia</h3>
+              </div>
+              <span class="work-card__play" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              </span>
+            </div>
+          </button>
+        </article>
+
+        <article class="work-card">
           <button type="button" class="work-card__btn" data-youtube-id="YCN6vi3qpfM" data-title="Safety Lift Solutions — Hydraulic Lifting for Excavator &amp; Shovel Maintenance" aria-label="Play Safety Lift Solutions video">
             <div class="work-card__thumb">
               <img src="images/work/safetylift-solutions.jpg" alt="Safety Lift Solutions — brand film for heavy lift jacking systems" loading="lazy">
@@ -271,6 +336,14 @@
           <li class="trusted-by__client">
             <img class="trusted-by__logo" src="images/Clients/primebatch-white.png" alt="PrimeBatch" loading="lazy">
           </li>
+          <li aria-hidden="true" class="trusted-by__divider"></li>
+          <li class="trusted-by__client">
+            <img class="trusted-by__logo trusted-by__logo--tall" src="images/Clients/dolphin-swim-white.png" alt="Dolphin Swim Australia" loading="lazy">
+          </li>
+          <li aria-hidden="true" class="trusted-by__divider"></li>
+          <li class="trusted-by__client">
+            <img class="trusted-by__logo" src="images/Clients/ride-industries-wordmark-white.png" alt="Ride Industries" loading="lazy">
+          </li>
         </ul>
       </div>
     </section>
@@ -286,20 +359,18 @@
           <h2 class="section-title">What Clients Say</h2>
         </div>
 
-        <!-- Featured review -->
-        <div class="review-featured">
-          <blockquote class="review-featured__quote">
-            "Excellent quality outcomes and great to work with."
-          </blockquote>
-          <div class="review-featured__meta">
-            <p class="review-stars" aria-label="5 out of 5 stars">★★★★★</p>
-            <p class="review-featured__attribution">— FMS Group</p>
-            <a href="https://www.google.com/maps" class="review-via" target="_blank" rel="noopener noreferrer">via Google</a>
-          </div>
-        </div>
-
-        <!-- Two smaller cards -->
         <div class="reviews-grid">
+
+          <article class="review-card">
+            <blockquote class="review-card__quote">
+              "Excellent quality outcomes and great to work with."
+            </blockquote>
+            <div class="review-card__footer">
+              <p class="review-stars" aria-label="5 out of 5 stars">★★★★★</p>
+              <p class="review-card__attribution">— FMS Group</p>
+              <a href="https://www.google.com/maps/place/?cid=7516819737276767067" class="review-via" target="_blank" rel="noopener noreferrer">via Google</a>
+            </div>
+          </article>
 
           <article class="review-card">
             <blockquote class="review-card__quote">
@@ -308,7 +379,7 @@
             <div class="review-card__footer">
               <p class="review-stars" aria-label="5 out of 5 stars">★★★★★</p>
               <p class="review-card__attribution">— Jon Bruce, Prime Batch</p>
-              <a href="https://www.google.com/maps" class="review-via" target="_blank" rel="noopener noreferrer">via Google</a>
+              <a href="https://www.google.com/maps/place/?cid=7516819737276767067" class="review-via" target="_blank" rel="noopener noreferrer">via Google</a>
             </div>
           </article>
 
@@ -319,7 +390,7 @@
             <div class="review-card__footer">
               <p class="review-stars" aria-label="5 out of 5 stars">★★★★★</p>
               <p class="review-card__attribution">— Sam Day, Tourism Operator</p>
-              <a href="https://www.google.com/maps" class="review-via" target="_blank" rel="noopener noreferrer">via Google</a>
+              <a href="https://www.google.com/maps/place/?cid=7516819737276767067" class="review-via" target="_blank" rel="noopener noreferrer">via Google</a>
             </div>
           </article>
 
@@ -339,7 +410,7 @@
         <div class="about__copy">
           <p class="section-eyebrow">Who We Are</p>
           <h2 class="section-title">We Lived It.<br>Now We Capture It.</h2>
-          <p class="about__body">Mets Media is Callum and Jordan — two blokes who spent years working in the mining industry before picking up a camera. Between us we've got 15 years experience on the tools. Jordan was a heavy diesel mechanic. Callum was in emergency response.</p>
+          <p class="about__body">Mets Media is Callum and Jordan — two former miners who picked up cameras. Between us we've got 15 years experience on the tools. Jordan was a heavy diesel mechanic. Callum was in emergency response.</p>
           <p class="about__body">We know what a pre-start looks like, what TARPs are, and why your site supervisor doesn't have time to babysit a film crew. We turn up, capture what matters, and deliver work that pulls its weight.</p>
           <p class="about__body">Let's get to work.</p>
           <a href="#contact" class="btn btn--primary">Work With Us</a>
@@ -348,44 +419,55 @@
     </section>
 
     <!-- ============================================================
-         WHY METS
+         HOW WE WORK
     ============================================================ -->
-    <section class="section why-mets" id="why-mets">
+    <section class="section how-we-work" id="how-we-work">
       <div class="container">
         <div class="section-header">
-          <p class="section-eyebrow">Why Mets Media</p>
-          <h2 class="section-title">Not Just Another<br>Production Company</h2>
-          <p class="section-intro">
-            Mining-savvy, owner-operated, and ready to travel.
-          </p>
+          <p class="section-eyebrow">How We Work</p>
+          <h2 class="section-title">Brief to Final Cut.<br>No Surprises.</h2>
+          <p class="section-intro">A straight-line process built for site schedules and procurement timelines.</p>
         </div>
-        <div class="why__grid">
 
-          <div class="why-item">
-            <div class="why-item__number">01</div>
-            <h3 class="why-item__title">Hunter Valley Based</h3>
-            <p class="why-item__body">
-              Half-day reach to most NSW mining operations. No agency overhead, no long-haul travel costs to get us on site.
-            </p>
-          </div>
+        <ol class="hww__steps">
 
-          <div class="why-item">
-            <div class="why-item__number">02</div>
-            <h3 class="why-item__title">Travel Australia-Wide</h3>
-            <p class="why-item__body">
-              Fly-in crew with full kit. We've worked sites across the country and know how to slot into your rotation.
-            </p>
-          </div>
+          <li class="hww__step">
+            <div class="hww__num">01</div>
+            <div class="hww__body">
+              <p class="hww__time">Same week</p>
+              <h3 class="hww__title">Brief</h3>
+              <p class="hww__desc">A 30-minute call to understand the goal, audience, and deliverables. You'll have a written quote in your inbox within 24 hours.</p>
+            </div>
+          </li>
 
-          <div class="why-item">
-            <div class="why-item__number">03</div>
-            <h3 class="why-item__title">Owner-Operated</h3>
-            <p class="why-item__body">
-              You talk to the people holding the cameras. No account managers, no project handoffs, no diluted vision.
-            </p>
-          </div>
+          <li class="hww__step">
+            <div class="hww__num">02</div>
+            <div class="hww__body">
+              <p class="hww__time">1–2 weeks lead</p>
+              <h3 class="hww__title">Pre-Production</h3>
+              <p class="hww__desc">Site recce, shot list, schedule, and access plan. We work around your operations — never the other way around.</p>
+            </div>
+          </li>
 
-        </div>
+          <li class="hww__step">
+            <div class="hww__num">03</div>
+            <div class="hww__body">
+              <p class="hww__time">1–3 days typical</p>
+              <h3 class="hww__title">Shoot</h3>
+              <p class="hww__desc">On-site capture with full kit — cameras, drone, lighting, audio. We slot into your rotation. Daily reviews on request.</p>
+            </div>
+          </li>
+
+          <li class="hww__step">
+            <div class="hww__num">04</div>
+            <div class="hww__body">
+              <p class="hww__time">2–3 weeks turnaround</p>
+              <h3 class="hww__title">Deliver</h3>
+              <p class="hww__desc">Edit and colour in DaVinci Resolve. One round of revisions included. Final files in every format you need — broadcast, web, social, OOH.</p>
+            </div>
+          </li>
+
+        </ol>
       </div>
     </section>
 
@@ -417,6 +499,10 @@
               <span class="contact__label">Based in</span>
               <span class="contact__value">Hunter Valley, NSW</span>
             </li>
+            <li>
+              <span class="contact__label">Google</span>
+              <a href="https://www.google.com/maps/place/?cid=7516819737276767067" class="contact__value" target="_blank" rel="noopener noreferrer">View on Google &amp; leave a review</a>
+            </li>
           </ul>
         </div>
         <form class="contact__form" id="contact-form" action="https://formspree.io/f/xqenkvnk" method="POST" novalidate>
@@ -431,6 +517,28 @@
           <div class="form-group">
             <label for="email" class="form-label">Email</label>
             <input type="email" id="email" name="email" class="form-input" placeholder="jane@acmemining.com" required>
+          </div>
+          <div class="form-group">
+            <label for="project-type" class="form-label">Project Type</label>
+            <select id="project-type" name="project_type" class="form-input form-input--select" required>
+              <option value="" disabled selected>Choose one</option>
+              <option value="Recruitment film">Recruitment film</option>
+              <option value="Brand film">Brand film</option>
+              <option value="Site documentation">Site documentation</option>
+              <option value="Equipment shoot">Equipment shoot</option>
+              <option value="Photography">Photography</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="timing" class="form-label">Approximate Timing</label>
+            <select id="timing" name="timing" class="form-input form-input--select" required>
+              <option value="" disabled selected>Choose one</option>
+              <option value="ASAP">ASAP</option>
+              <option value="Next 1-3 months">Next 1-3 months</option>
+              <option value="Next 3-6 months">Next 3-6 months</option>
+              <option value="Just exploring">Just exploring</option>
+            </select>
           </div>
           <div class="form-group">
             <label for="message" class="form-label">Tell Us About Your Project</label>
