@@ -39,23 +39,29 @@
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
   /* ---- WORK CAROUSEL ---------------------------------------- */
-  const track   = document.getElementById('work-track');
-  const prevBtn = document.getElementById('work-prev');
-  const nextBtn = document.getElementById('work-next');
+  const track    = document.getElementById('work-track');
+  const prevBtns = [
+    document.getElementById('work-prev'),
+    document.getElementById('work-prev-mobile')
+  ].filter(Boolean);
+  const nextBtns = [
+    document.getElementById('work-next'),
+    document.getElementById('work-next-mobile')
+  ].filter(Boolean);
 
-  if (track && prevBtn && nextBtn) {
+  if (track && prevBtns.length && nextBtns.length) {
     function cardScrollWidth() {
       const card = track.querySelector('.work-card');
       if (!card) return 440;
       return card.offsetWidth + parseInt(getComputedStyle(track).gap || '16');
     }
 
-    prevBtn.addEventListener('click', () => {
+    prevBtns.forEach(btn => btn.addEventListener('click', () => {
       track.scrollBy({ left: -cardScrollWidth(), behavior: 'smooth' });
-    });
-    nextBtn.addEventListener('click', () => {
+    }));
+    nextBtns.forEach(btn => btn.addEventListener('click', () => {
       track.scrollBy({ left: cardScrollWidth(), behavior: 'smooth' });
-    });
+    }));
 
     /* Drag-to-scroll — pointer events, with click-vs-drag threshold.
        Listeners use CAPTURE phase so they fire before any button child

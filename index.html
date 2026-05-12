@@ -316,34 +316,39 @@
         </article>
 
       </div>
+
+      <div class="container work__arrows-mobile">
+        <button class="work__arrow" id="work-prev-mobile" aria-label="Previous project">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M15 18l-6-6 6-6"/>
+          </svg>
+        </button>
+        <button class="work__arrow" id="work-next-mobile" aria-label="Next project">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M9 18l6-6-6-6"/>
+          </svg>
+        </button>
+      </div>
     </section>
 
     <!-- ============================================================
          TRUSTED BY
     ============================================================ -->
     <section class="trusted-by" id="trusted-by">
-      <div class="container trusted-by__inner">
-        <p class="trusted-by__label">Trusted By</p>
-        <ul class="trusted-by__list">
-          <li class="trusted-by__client">
-            <img class="trusted-by__logo" src="images/Clients/fms-group-white.png" alt="FMS Group" loading="lazy">
-          </li>
-          <li aria-hidden="true" class="trusted-by__divider"></li>
-          <li class="trusted-by__client">
-            <img class="trusted-by__logo" src="images/Clients/safety-lift-white.png" alt="Safety Lift Solutions" loading="lazy">
-          </li>
-          <li aria-hidden="true" class="trusted-by__divider"></li>
-          <li class="trusted-by__client">
-            <img class="trusted-by__logo" src="images/Clients/primebatch-white.png" alt="PrimeBatch" loading="lazy">
-          </li>
-          <li aria-hidden="true" class="trusted-by__divider"></li>
-          <li class="trusted-by__client">
-            <img class="trusted-by__logo trusted-by__logo--tall" src="images/Clients/dolphin-swim-white.png" alt="Dolphin Swim Australia" loading="lazy">
-          </li>
-          <li aria-hidden="true" class="trusted-by__divider"></li>
-          <li class="trusted-by__client">
-            <img class="trusted-by__logo" src="images/Clients/ride-industries-wordmark-white.png" alt="Ride Industries" loading="lazy">
-          </li>
+      <p class="trusted-by__label">Trusted By</p>
+      <div class="trusted-by__marquee">
+        <ul class="trusted-by__track">
+          <li class="trusted-by__client"><img class="trusted-by__logo" src="images/Clients/fms-group-white.png" alt="FMS Group" loading="lazy"></li>
+          <li class="trusted-by__client"><img class="trusted-by__logo" src="images/Clients/safety-lift-white.png" alt="Safety Lift Solutions" loading="lazy"></li>
+          <li class="trusted-by__client"><img class="trusted-by__logo" src="images/Clients/primebatch-white.png" alt="PrimeBatch" loading="lazy"></li>
+          <li class="trusted-by__client"><img class="trusted-by__logo trusted-by__logo--tall" src="images/Clients/dolphin-swim-white.png" alt="Dolphin Swim Australia" loading="lazy"></li>
+          <li class="trusted-by__client"><img class="trusted-by__logo" src="images/Clients/ride-industries-wordmark-white.png" alt="Ride Industries" loading="lazy"></li>
+          <!-- Duplicate set for seamless loop -->
+          <li class="trusted-by__client" aria-hidden="true"><img class="trusted-by__logo" src="images/Clients/fms-group-white.png" alt="" loading="lazy"></li>
+          <li class="trusted-by__client" aria-hidden="true"><img class="trusted-by__logo" src="images/Clients/safety-lift-white.png" alt="" loading="lazy"></li>
+          <li class="trusted-by__client" aria-hidden="true"><img class="trusted-by__logo" src="images/Clients/primebatch-white.png" alt="" loading="lazy"></li>
+          <li class="trusted-by__client" aria-hidden="true"><img class="trusted-by__logo trusted-by__logo--tall" src="images/Clients/dolphin-swim-white.png" alt="" loading="lazy"></li>
+          <li class="trusted-by__client" aria-hidden="true"><img class="trusted-by__logo" src="images/Clients/ride-industries-wordmark-white.png" alt="" loading="lazy"></li>
         </ul>
       </div>
     </section>
@@ -403,17 +408,18 @@
     ============================================================ -->
     <section class="section about" id="about">
       <div class="container about__layout">
+        <div class="about__header">
+          <p class="section-eyebrow">Who We Are</p>
+        </div>
         <div class="about__visual">
           <div class="about__img-placeholder"></div>
           <div class="about__accent-block"></div>
         </div>
         <div class="about__copy">
-          <p class="section-eyebrow">Who We Are</p>
-          <h2 class="section-title">We Lived It.<br>Now We Capture It.</h2>
+          <h2 class="section-title about__title">We Lived It.<br>Now We Capture It.</h2>
           <p class="about__body">Mets Media is Callum and Jordan — two former miners who picked up cameras. Between us we've got 15 years experience on the tools. Jordan was a heavy diesel mechanic. Callum was in emergency response.</p>
           <p class="about__body">We know what a pre-start looks like, what TARPs are, and why your site supervisor doesn't have time to babysit a film crew. We turn up, capture what matters, and deliver work that pulls its weight.</p>
           <p class="about__body">Let's get to work.</p>
-          <a href="#contact" class="btn btn--primary">Work With Us</a>
         </div>
       </div>
     </section>
@@ -566,7 +572,7 @@
   <footer class="footer">
     <div class="container footer__layout">
       <a href="#hero" class="footer__logo" aria-label="Back to top">
-        <img src="brand/primary/mets-circle-light.png" alt="Mets Media House" class="footer__logo-img">
+        <img src="brand/primary/mets-wordmark-white.png" alt="Mets Media House" class="footer__logo-img">
       </a>
       <p class="footer__legal">&copy; <span id="year"></span> Mets Media · ABN 17 130 640 791 629</p>
     </div>
