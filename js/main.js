@@ -119,17 +119,9 @@
       }
     }, true); // capture phase, beats the video-opener handler
 
-    /* Start the carousel scrolled to the middle so the user can drag
-       in either direction. Wait for images to load so scrollWidth is final. */
-    function centerTrack() {
-      const max = track.scrollWidth - track.clientWidth;
-      if (max > 0) track.scrollLeft = max / 2;
-    }
-    if (document.readyState === 'complete') {
-      centerTrack();
-    } else {
-      window.addEventListener('load', centerTrack, { once: true });
-    }
+    /* Start the carousel at the left — strongest videos go first.
+       Users naturally scroll right, so put your best work at the start. */
+    track.scrollLeft = 0;
   }
 
   /* ---- VIDEO MODAL ------------------------------------------ */
