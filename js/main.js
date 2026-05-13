@@ -1,5 +1,5 @@
 /* ================================================================
-   METS MEDIA — main.js
+   METS MEDIA - main.js
 ================================================================ */
 
 (function () {
@@ -63,9 +63,9 @@
       track.scrollBy({ left: cardScrollWidth(), behavior: 'smooth' });
     }));
 
-    /* Drag-to-scroll — pointer events, with click-vs-drag threshold.
+    /* Drag-to-scroll - pointer events, with click-vs-drag threshold.
        Listeners use CAPTURE phase so they fire before any button child
-       handlers — keeps drag working even when card root is a <button>. */
+       handlers - keeps drag working even when card root is a <button>. */
     let isDown = false;
     let didDrag = false;
     let startX = 0;
@@ -74,7 +74,7 @@
 
     track.addEventListener('pointerdown', e => {
       if (e.button !== 0) return; // primary button only
-      if (e.pointerType === 'touch') return; // native handles touch — smoother momentum
+      if (e.pointerType === 'touch') return; // native handles touch - smoother momentum
       isDown = true;
       didDrag = false;
       startX = e.clientX;
@@ -119,7 +119,7 @@
       }
     }, true); // capture phase, beats the video-opener handler
 
-    /* Start the carousel at the left — strongest videos go first.
+    /* Start the carousel at the left - strongest videos go first.
        Users naturally scroll right, so put your best work at the start. */
     track.scrollLeft = 0;
   }

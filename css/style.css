@@ -1,6 +1,6 @@
 /* ================================================================
-   METS MEDIA — style.css
-   Pure black + cream. No third colour — footage provides it.
+   METS MEDIA - style.css
+   Pure black + cream. No third colour - footage provides it.
    Palette: #000000 bg · #FAF7E8 cream · Manrope
 ================================================================ */
 
@@ -85,7 +85,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   margin-bottom: clamp(2.5rem, 6vw, 4rem);
 }
 
-/* ---- BUTTONS — cream pills on black ------------------------- */
+/* ---- BUTTONS - cream pills on black ------------------------- */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -194,7 +194,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 }
 .nav__link--cta:hover { background: #ffffff; }
 
-/* Hamburger — visible by default; hidden on wide screens via min-width query below */
+/* Hamburger - visible by default; hidden on wide screens via min-width query below */
 .nav__toggle {
   display: flex;
   position: relative;
@@ -241,7 +241,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 }
 
 
-/* ---- HERO SCRIM — readability gradient at the bottom --------- */
+/* ---- HERO SCRIM - readability gradient at the bottom --------- */
 .hero__scrim {
   position: absolute;
   inset: 0;
@@ -417,7 +417,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 }
 
 /* ============================================================
-   Capabilities V5 — Bebas Neue display, 3-tile editorial layout
+   Capabilities V5 - Bebas Neue display, 3-tile editorial layout
    ============================================================ */
 .capv5__top {
   display: flex;
@@ -596,7 +596,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   line-height: 1.75;
 }
 
-/* ---- WORK — horizontal carousel ----------------------------- */
+/* ---- WORK - horizontal carousel ----------------------------- */
 .work {
   background: var(--bg);
   overflow: hidden;
@@ -731,7 +731,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   letter-spacing: 0.01em;
 }
 
-/* Card button — when card has a video, the thumb becomes a clickable button */
+/* Card button - when card has a video, the thumb becomes a clickable button */
 .work-card__btn {
   display: block;
   width: 100%;
@@ -1424,7 +1424,7 @@ a.contact__value:hover { color: var(--cream); }
    RESPONSIVE
 ================================================================ */
 
-/* Tablet — ≤ 900px */
+/* Tablet - ≤ 900px */
 @media (max-width: 900px) {
   .about__layout {
     grid-template-columns: 1fr;
@@ -1448,7 +1448,7 @@ a.contact__value:hover { color: var(--cream); }
   .why__grid { grid-template-columns: 1fr; }
 }
 
-/* Nav — hamburger kicks in at 1024px and below */
+/* Nav - hamburger kicks in at 1024px and below */
 @media (max-width: 1024px) {
   .site-header { min-height: 88px; padding-block: 24px; }
   .nav__logo img,
@@ -1491,7 +1491,7 @@ a.contact__value:hover { color: var(--cream); }
   .nav__link--cta { display: none; }
 }
 
-/* Desktop nav — explicitly hide hamburger and show link row at 1025px+ */
+/* Desktop nav - explicitly hide hamburger and show link row at 1025px+ */
 @media (min-width: 1025px) {
   .nav__toggle { display: none; }
   .nav__links {
@@ -1523,10 +1523,10 @@ a.contact__value:hover { color: var(--cream); }
   .nav__link--cta { display: flex; }
 }
 
-/* Mobile — ≤ 768px */
+/* Mobile - ≤ 768px */
 @media (max-width: 768px) {
   /* Hero */
-  /* Trusted by — marquee handles its own layout, just slow it slightly on mobile */
+  /* Trusted by - marquee handles its own layout, just slow it slightly on mobile */
   .trusted-by { padding: 3rem 0; }
   .trusted-by__track { animation-duration: 28s; }
 
@@ -1541,7 +1541,7 @@ a.contact__value:hover { color: var(--cream); }
   .footer__nav { gap: 1rem; }
   .footer__legal { text-align: left; }
 
-  /* Hero video plays on mobile — file will need compression before launch */
+  /* Hero video plays on mobile - file will need compression before launch */
 }
 
 @media (prefers-reduced-motion: reduce) {
