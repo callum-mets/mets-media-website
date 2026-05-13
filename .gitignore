@@ -3,8 +3,9 @@
 .AppleDouble
 .LSOverride
 
-# Large media files (add manually when ready to deploy)
-videos/*.mp4
+# Keep compressed web videos in git; ignore the heavy DaVinci sources
+videos/*-source.mp4
+videos/*-4k-source.mp4
 videos/*.mov
 
 # Editor
