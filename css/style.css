@@ -279,6 +279,17 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   text-shadow: 0 2px 18px rgba(0, 0, 0, 0.5);
 }
 
+.hero__tagline {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(0.7rem, 1vw, 0.85rem);
+  letter-spacing: 0.18em;
+  color: #FAF7E8;
+  margin: 0.7rem 0 0;
+  opacity: 0.85;
+  text-transform: uppercase;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.5);
+}
+
 .hero__cta {
   display: inline-block;
   background: transparent;
