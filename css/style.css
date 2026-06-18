@@ -1250,8 +1250,8 @@ body.is-modal-open {
 .service-map__frame {
   position: relative;
   padding: clamp(1rem, 2.5vw, 1.8rem);
-  background: radial-gradient(circle at 52% 50%, rgba(250, 247, 232, 0.055), transparent 58%), #020202;
-  overflow: hidden;
+  background: transparent;
+  overflow: visible;
 }
 
 .service-map__canvas {
@@ -1260,7 +1260,19 @@ body.is-modal-open {
   margin-inline: auto;
 }
 
+.service-map__canvas::before {
+  content: '';
+  position: absolute;
+  inset: 4% 2% 8%;
+  z-index: 0;
+  background: radial-gradient(ellipse at center, rgba(250, 247, 232, 0.05) 0%, rgba(250, 247, 232, 0.025) 42%, rgba(0, 0, 0, 0) 74%);
+  filter: blur(18px);
+  pointer-events: none;
+}
+
 .service-map__image {
+  position: relative;
+  z-index: 1;
   width: 100%;
   height: auto;
   opacity: 0.95;
