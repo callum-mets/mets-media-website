@@ -190,45 +190,6 @@
     });
   }
 
-  /* ---- CONTACT FORM: Formspree AJAX submission -------------- */
-  const form      = document.getElementById('contact-form');
-  const successEl = document.getElementById('form-success');
-  const errorEl   = document.getElementById('form-error');
-
-  if (form) {
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-
-      errorEl.hidden = true;
-
-      const submitBtn = form.querySelector('button[type="submit"]');
-      const originalBtnText = submitBtn.textContent;
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'SENDING...';
-
-      try {
-        const formData = new FormData(form);
-        const response = await fetch(form.action, {
-          method: 'POST',
-          body: formData,
-          headers: { 'Accept': 'application/json' }
-        });
-
-        if (response.ok) {
-          form.hidden = true;
-          successEl.hidden = false;
-          successEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        } else {
-          throw new Error('Submission failed');
-        }
-      } catch (err) {
-        errorEl.hidden = false;
-        submitBtn.disabled = false;
-        submitBtn.textContent = originalBtnText;
-      }
-    });
-  }
-
   /* ---- SCROLL-IN ANIMATIONS --------------------------------- */
   const observer = new IntersectionObserver(
     entries => {

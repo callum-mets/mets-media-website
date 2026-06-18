@@ -1211,11 +1211,178 @@ body.is-modal-open {
   text-shadow: 0 1px 8px rgba(0, 0, 0, 0.85);
 }
 
+.hww__cta {
+  margin-top: clamp(2.25rem, 5vw, 4rem);
+  text-align: center;
+}
+
+.hww__cta .btn {
+  font-size: 0.9rem;
+  padding-inline: clamp(1.5rem, 4vw, 2.6rem);
+}
+
 @media (max-width: 980px) {
   .hww__steps { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 600px) {
   .hww__steps { grid-template-columns: 1fr; }
+}
+
+/* ---- SERVICE AREAS ------------------------------------------- */
+.service-map {
+  position: relative;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, var(--bg) 18%, var(--bg) 100%);
+  margin-top: clamp(-3rem, -4vw, -1.5rem);
+  padding-top: clamp(7rem, 12vw, 10rem);
+}
+
+.service-map__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(360px, 1.18fr);
+  gap: clamp(2.5rem, 7vw, 6rem);
+  align-items: center;
+}
+
+.service-map__copy .section-title {
+  max-width: 12ch;
+}
+
+.service-map__frame {
+  position: relative;
+  padding: clamp(1rem, 2.5vw, 1.8rem);
+  background: radial-gradient(circle at 52% 50%, rgba(250, 247, 232, 0.055), transparent 58%), #020202;
+  overflow: hidden;
+}
+
+.service-map__canvas {
+  position: relative;
+  max-width: 660px;
+  margin-inline: auto;
+}
+
+.service-map__image {
+  width: 100%;
+  height: auto;
+  opacity: 0.95;
+  filter: drop-shadow(0 0 16px rgba(250, 247, 232, 0.08));
+}
+
+.service-map__marker {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+.service-map__dot {
+  width: 0.72rem;
+  height: 0.72rem;
+  display: block;
+  border-radius: 999px;
+  background: #1e8cff;
+  box-shadow: 0 0 0 3px rgba(30, 140, 255, 0.16), 0 0 16px rgba(30, 140, 255, 0.55);
+}
+
+.service-map__pin {
+  width: 1.18rem;
+  height: 1.18rem;
+  display: block;
+  border-radius: 999px 999px 999px 0;
+  background: #ff3b30;
+  transform: rotate(-45deg);
+  box-shadow: 0 0 0 4px rgba(255, 59, 48, 0.16), 0 0 20px rgba(255, 59, 48, 0.65);
+}
+
+.service-map__pin::after {
+  content: '';
+  position: absolute;
+  width: 0.32rem;
+  height: 0.32rem;
+  border-radius: 999px;
+  background: #ffffff;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.service-map__marker-label {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  white-space: nowrap;
+  color: rgba(250, 247, 232, 0.78);
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 1.15;
+  paint-order: stroke;
+  text-shadow: 0 0 8px #020202, 0 0 14px #020202;
+}
+
+.service-map__marker-label--left {
+  left: auto;
+  right: 1rem;
+  text-align: right;
+}
+
+.service-map__marker-label--coast {
+  right: 1.5rem;
+  top: calc(50% + 0.5rem);
+}
+
+.service-map__marker-label--home {
+  left: auto;
+  right: 3rem;
+  top: -0.05rem;
+  transform: none;
+  text-align: right;
+  color: var(--cream);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.service-map__marker-label small {
+  color: rgba(250, 247, 232, 0.78);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+@media (max-width: 900px) {
+  .service-map__layout {
+    grid-template-columns: 1fr;
+  }
+
+  .service-map__copy .section-title {
+    max-width: 14ch;
+  }
+}
+
+@media (max-width: 560px) {
+  .service-map__frame {
+    padding: 0.75rem;
+    margin-inline: calc(var(--gutter) * -0.35);
+  }
+
+  .service-map__marker-label {
+    font-size: 0.52rem;
+  }
+
+  .service-map__marker-label small {
+    font-size: 0.5rem;
+  }
+
+  .service-map__dot {
+    width: 0.55rem;
+    height: 0.55rem;
+  }
+
+  .service-map__pin {
+    width: 1.1rem;
+    height: 1.1rem;
+  }
 }
 
 /* ---- CONTACT ------------------------------------------------- */
@@ -1225,15 +1392,26 @@ body.is-modal-open {
 
 .contact__layout {
   display: grid;
-  grid-template-columns: 1fr 1.1fr;
+  grid-template-columns: minmax(0, 780px);
+  justify-content: center;
   gap: clamp(2.5rem, 7vw, 6rem);
   align-items: start;
 }
 
 .contact__body {
   color: var(--cream-muted);
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   font-size: 0.97rem;
+}
+
+.contact__cta {
+  margin-bottom: 2rem;
+}
+
+.contact__value--stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
 }
 
 .contact__details {
@@ -1262,92 +1440,6 @@ body.is-modal-open {
   transition: color 0.2s;
 }
 a.contact__value:hover { color: var(--cream); }
-
-/* Form */
-.contact__form {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-}
-
-.form-label {
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
-  color: var(--cream-muted);
-}
-
-.form-input {
-  background: var(--surface);
-  border: 1px solid var(--cream-border);
-  border-radius: 4px;
-  padding: 0.85rem 1rem;
-  font-family: var(--font);
-  font-size: 0.97rem;
-  color: var(--cream);
-  transition: border-color 0.2s, box-shadow 0.2s;
-  outline: none;
-  width: 100%;
-}
-.form-input::placeholder { color: var(--cream-faint); }
-.form-input:focus {
-  border-color: var(--cream-muted);
-  box-shadow: 0 0 0 3px var(--cream-glow);
-}
-
-.form-input--textarea {
-  resize: vertical;
-  min-height: 120px;
-}
-
-/* Native <select> styled to match text inputs */
-.form-input--select {
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='%23faf7e8' fill-opacity='0.55' d='M4 6l4 4 4-4z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 1rem center;
-  background-size: 0.75rem;
-  padding-right: 2.5rem;
-  cursor: pointer;
-}
-.form-input--select:invalid { color: var(--cream-faint); }
-.form-input--select option {
-  background: #080808;
-  color: var(--cream);
-}
-.form-input--select option:disabled { color: var(--cream-faint); }
-
-.form-success,
-.form-error {
-  padding: 2rem;
-  border-radius: 999px;
-}
-
-.form-success {
-  background: var(--cream);
-  color: #000000;
-}
-
-.form-success h3 {
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-}
-
-.form-error {
-  background: #000000;
-  color: var(--cream);
-  border: 1px solid var(--cream-border);
-}
 
 /* ---- FOOTER -------------------------------------------------- */
 .footer {
