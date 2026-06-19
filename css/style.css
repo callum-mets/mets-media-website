@@ -329,6 +329,8 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 .hero-cta-strip {
   position: relative;
   z-index: 2;
+  display: flex;
+  justify-content: center;
   background: var(--bg);
   text-align: center;
   padding: clamp(1.4rem, 3vw, 2.2rem) var(--gutter) clamp(2.2rem, 4vw, 3.2rem);
@@ -717,6 +719,8 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 }
 
 .work__cta {
+  display: flex;
+  justify-content: center;
   margin-top: clamp(2rem, 5vw, 3.5rem);
   text-align: center;
 }
@@ -1258,6 +1262,8 @@ body.is-modal-open {
 }
 
 .hww__cta {
+  display: flex;
+  justify-content: center;
   margin-top: clamp(2.25rem, 5vw, 4rem);
   text-align: center;
 }
@@ -1481,7 +1487,6 @@ body.is-modal-open {
   width: 100%;
   height: auto;
   filter: invert(1) sepia(0.12) saturate(1.4) hue-rotate(8deg) brightness(1.02);
-  mix-blend-mode: screen;
   opacity: 0.9;
 }
 
