@@ -190,6 +190,45 @@
     });
   }
 
+
+
+  /* ---- CONTACT MOTION GRAPHIC ------------------------------- */
+  const contactMotionVideo = document.querySelector('.contact__motion-video');
+
+  if (contactMotionVideo && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const maxMotionPlays = 4;
+    let motionPlays = 1;
+
+    contactMotionVideo.addEventListener('ended', () => {
+      if (motionPlays >= maxMotionPlays) {
+        contactMotionVideo.pause();
+        return;
+      }
+
+      motionPlays += 1;
+      contactMotionVideo.currentTime = 0;
+      contactMotionVideo.play().catch(() => {});
+    });
+  }
+
+  /* ---- CTA SHINE / PULSE ------------------------------------ */
+  const primaryCtas = document.querySelectorAll('.btn--primary');
+
+  if (primaryCtas.length && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const ctaObserver = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('cta-polish');
+          ctaObserver.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.35, rootMargin: '0px 0px -8% 0px' }
+    );
+
+    primaryCtas.forEach(cta => ctaObserver.observe(cta));
+  }
+
   /* ---- SCROLL-IN ANIMATIONS --------------------------------- */
   const observer = new IntersectionObserver(
     entries => {

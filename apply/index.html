@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Apply | Mets Media House</title>
+    <meta name="description" content="Apply for a free Mets Media House Site Content Audit.">
+    <link rel="stylesheet" href="/assets/styles.css">
+  </head>
+  <body>
+    <main class="shell">
+      <section class="card" aria-label="Pre-call survey">
+        <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+
+        <form id="surveyForm" novalidate>
+          <section class="step is-active" data-step="0">
+            <p class="eyebrow">Application step 1 of 6</p>
+            <div class="question">
+              <h1>Let's find out if we're a good fit. First, what's your website URL?</h1>
+              <p class="subtext">(If you don't have one, type 'don't have one')</p>
+            </div>
+            <div class="field">
+              <input id="website" name="website" type="text" autocomplete="url" required>
+              <p class="error">Please enter your website URL, or type "don't have one".</p>
+            </div>
+            <div class="actions">
+              <button class="primary" type="button" data-next>Continue →</button>
+            </div>
+          </section>
+
+          <section class="step" data-step="1">
+            <p class="eyebrow">Application step 2 of 6</p>
+            <div class="question">
+              <h1>Briefly describe your business, what you do, and who you are trying to reach.</h1>
+            </div>
+            <div class="field">
+              <textarea id="business" name="business" required></textarea>
+              <p class="error">Please give us enough context to understand the operation.</p>
+            </div>
+            <div class="actions">
+              <button class="secondary" type="button" data-back>Back</button>
+              <button class="primary" type="button" data-next>Continue →</button>
+            </div>
+          </section>
+
+          <section class="step" data-step="2">
+            <p class="eyebrow">Application step 3 of 6</p>
+            <div class="question">
+              <h1>Be honest... what's the #1 biggest obstacle holding you back from getting the site footage you need?</h1>
+              <p class="subtext">(Don't skip the hairy details. We need to know what's actually holding you back).</p>
+            </div>
+            <div class="field">
+              <textarea id="obstacle" name="obstacle" required></textarea>
+              <p class="error">Please tell us what is actually getting in the way.</p>
+            </div>
+            <div class="actions">
+              <button class="secondary" type="button" data-back>Back</button>
+              <button class="primary" type="button" data-next>Continue →</button>
+            </div>
+          </section>
+
+          <section class="step" data-step="3">
+            <p class="eyebrow">Application step 4 of 6</p>
+            <div class="question">
+              <h1>When are you looking to get started?</h1>
+            </div>
+            <div class="choices" data-choice-group="timeline">
+              <button class="choice" type="button" data-value="Immediately">Immediately</button>
+              <button class="choice" type="button" data-value="In 2-4 weeks">In 2-4 weeks</button>
+              <button class="choice" type="button" data-value="6 weeks+">6 weeks+</button>
+              <button class="choice" type="button" data-value="I'm just looking around">I'm just looking around</button>
+            </div>
+            <div class="actions">
+              <button class="secondary" type="button" data-back>Back</button>
+            </div>
+          </section>
+
+          <section class="step" data-step="4">
+            <p class="eyebrow">Application step 5 of 6</p>
+            <div class="question">
+              <h1>Do you pinky promise that if you qualify for a phone call, you will show up at the selected time?</h1>
+            </div>
+            <div class="promise-grid" data-choice-group="promise">
+              <button class="choice" type="button" data-value="No">👎 No</button>
+              <button class="choice" type="button" data-value="Yes">👍 Yes</button>
+            </div>
+            <div class="actions">
+              <button class="secondary" type="button" data-back>Back</button>
+            </div>
+          </section>
+
+          <section class="step" data-step="5">
+            <p class="eyebrow">Final application step</p>
+            <div class="question">
+              <h1>BOOM! 👊 It looks like we can help you capture your site capability. Enter your details below to see if you qualify.</h1>
+            </div>
+            <div class="capture-grid">
+              <input id="firstName" name="firstName" type="text" autocomplete="given-name" placeholder="First Name" required>
+              <input id="lastName" name="lastName" type="text" autocomplete="family-name" placeholder="Last Name" required>
+              <input id="mobile" name="mobile" type="tel" autocomplete="tel" placeholder="Mobile Number" required>
+              <input id="company" name="company" type="text" autocomplete="organization" placeholder="Company Name" required>
+              <input class="full" id="email" name="email" type="email" autocomplete="email" placeholder="Email Address" required>
+            </div>
+            <p class="error" id="captureError">Please complete all details before submitting.</p>
+            <div class="actions">
+              <button class="secondary" type="button" data-back>Back</button>
+              <button class="primary" type="submit">CLAIM YOUR FREE $800 STRATEGY SESSION</button>
+            </div>
+          </section>
+        </form>
+      </section>
+    </main>
+
+    <script src="/assets/apply.js"></script>
+  </body>
+</html>

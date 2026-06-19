@@ -87,6 +87,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 
 /* ---- BUTTONS - cream pills on black ------------------------- */
 .btn {
+  position: relative;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -96,6 +97,8 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
+  overflow: hidden;
+  isolation: isolate;
   transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.15s;
 }
 
@@ -105,7 +108,40 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   background: var(--cream);
   color: #000000;
 }
+
+.btn--primary::after {
+  content: '';
+  position: absolute;
+  inset: -45% auto -45% -65%;
+  z-index: -1;
+  width: 42%;
+  background: linear-gradient(115deg, transparent 0%, rgba(255, 255, 255, 0) 22%, rgba(255, 255, 255, 0.9) 48%, rgba(255, 255, 255, 0) 74%, transparent 100%);
+  transform: translateX(-120%) skewX(-18deg);
+  opacity: 0;
+  pointer-events: none;
+}
+
 .btn--primary:hover { background: #ffffff; }
+
+.btn--primary.cta-polish {
+  animation: cta-pulse 1.15s ease-out 2;
+}
+
+.btn--primary.cta-polish::after {
+  animation: cta-shine 1.45s ease-out 0.08s 2;
+}
+
+@keyframes cta-pulse {
+  0%, 100% { transform: scale(1); }
+  38% { transform: scale(1.035); }
+  62% { transform: scale(0.99); }
+}
+
+@keyframes cta-shine {
+  0% { opacity: 0; transform: translateX(-120%) skewX(-18deg); }
+  18% { opacity: 0.85; }
+  78%, 100% { opacity: 0; transform: translateX(460%) skewX(-18deg); }
+}
 
 .btn--ghost {
   background: transparent;
@@ -255,7 +291,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   );
 }
 
-/* ---- HERO CONTENT (title + CTA) ------------------------------ */
+/* ---- HERO CONTENT --------------------------------------------- */
 .hero__content {
   position: absolute;
   left: 50%;
@@ -290,24 +326,23 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   text-shadow: 0 2px 18px rgba(0, 0, 0, 0.5);
 }
 
+.hero-cta-strip {
+  position: relative;
+  z-index: 2;
+  background: var(--bg);
+  text-align: center;
+  padding: clamp(1.4rem, 3vw, 2.2rem) var(--gutter) clamp(2.2rem, 4vw, 3.2rem);
+}
+
 .hero__cta {
-  display: inline-block;
-  background: transparent;
-  color: #FAF7E8;
-  padding: 0.95rem 2.25rem;
-  border: 1.5px solid #FAF7E8;
-  border-radius: 999px;
-  font-weight: 600;
-  font-size: 0.95rem;
-  letter-spacing: 0.08em;
-  text-decoration: none;
-  white-space: nowrap;
-  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  justify-content: center;
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.38);
+  white-space: normal;
+  font-size: 0.9rem;
+  padding-inline: clamp(1.5rem, 4vw, 2.6rem);
 }
 
 .hero__cta:hover {
-  background: #FAF7E8;
-  color: #000000;
   transform: translateY(-2px);
 }
 
@@ -321,8 +356,9 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
     max-width: 28ch;
   }
   .hero__cta {
-    padding: 0.85rem 1.75rem;
-    font-size: 0.85rem;
+    padding: 0.85rem 1.35rem;
+    font-size: 0.78rem;
+    max-width: 20rem;
   }
 }
 
@@ -678,6 +714,16 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   -webkit-user-drag: none;
   user-select: none;
   -webkit-user-select: none;
+}
+
+.work__cta {
+  margin-top: clamp(2rem, 5vw, 3.5rem);
+  text-align: center;
+}
+
+.work__cta .btn {
+  font-size: 0.9rem;
+  padding-inline: clamp(1.5rem, 4vw, 2.6rem);
 }
 
 /* Align first card with container on large screens */
@@ -1404,9 +1450,9 @@ body.is-modal-open {
 
 .contact__layout {
   display: grid;
-  grid-template-columns: minmax(0, 780px);
+  grid-template-columns: minmax(0, 760px) minmax(220px, 360px);
   justify-content: center;
-  gap: clamp(2.5rem, 7vw, 6rem);
+  gap: clamp(2rem, 5vw, 4rem);
   align-items: start;
 }
 
@@ -1420,6 +1466,25 @@ body.is-modal-open {
   margin-bottom: 2rem;
 }
 
+
+.contact__motion {
+  align-self: start;
+  justify-self: center;
+  width: min(30vw, 360px);
+  margin-top: clamp(18.5rem, 32.5vw, 21.5rem);
+  transform: translateX(clamp(-10rem, -11vw, -6rem));
+  pointer-events: none;
+}
+
+.contact__motion-video {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: invert(1) sepia(0.12) saturate(1.4) hue-rotate(8deg) brightness(1.02);
+  mix-blend-mode: screen;
+  opacity: 0.9;
+}
+
 .contact__value--stack {
   display: flex;
   flex-direction: column;
@@ -1430,6 +1495,16 @@ body.is-modal-open {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
+}
+
+@media (max-width: 900px) {
+  .contact__layout {
+    grid-template-columns: 1fr;
+  }
+
+  .contact__motion {
+    display: none;
+  }
 }
 
 .contact__details li {
@@ -1661,4 +1736,6 @@ a.contact__value:hover { color: var(--cream); }
 
 @media (prefers-reduced-motion: reduce) {
   .hero-video { display: none; }
+  .btn--primary.cta-polish,
+  .btn--primary.cta-polish::after { animation: none; }
 }

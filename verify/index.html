@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Verifying | Mets Media House</title>
+    <meta name="description" content="Verifying your Mets Media House application.">
+    <link rel="stylesheet" href="/assets/styles.css">
+  </head>
+  <body>
+    <main class="shell">
+      <section class="card loading-card" aria-live="polite">
+        <p class="eyebrow">Application review</p>
+        <h1>Checking your answers.</h1>
+        <div class="loading-wrap" aria-hidden="true">
+          <div class="loading-bar"></div>
+        </div>
+        <p class="warning">⚠️ Please be patient as we verify your answers...</p>
+      </section>
+    </main>
+    <script>
+      window.setTimeout(() => {
+        window.location.href = "/book/";
+      }, 4000);
+    </script>
+  </body>
+</html>
