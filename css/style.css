@@ -427,6 +427,12 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 .trusted-by__logo--tall {
   height: 78px;
 }
+.trusted-by__logo--wide {
+  height: 46px;
+}
+.trusted-by__logo--invert {
+  filter: invert(1);
+}
 .trusted-by__client:hover .trusted-by__logo { opacity: 1; }
 
 /* Desktop: static centered row, no animation, no duplicates visible */
@@ -1005,12 +1011,23 @@ body.is-modal-open {
 
 .reviews-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 1.25rem;
 }
 
 @media (max-width: 900px) {
-  .reviews-grid { grid-template-columns: 1fr; }
+  .reviews-grid {
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(280px, 82vw);
+    grid-template-columns: none;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scroll-snap-type: inline mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 0.75rem;
+  }
+
+  .review-card { scroll-snap-align: start; }
 }
 
 .review-card {
@@ -1304,6 +1321,7 @@ body.is-modal-open {
   padding: clamp(1rem, 2.5vw, 1.8rem);
   background: transparent;
   overflow: visible;
+  transform: translateY(clamp(1rem, 2vw, 1.75rem));
 }
 
 .service-map__canvas {
@@ -1340,29 +1358,29 @@ body.is-modal-open {
 }
 
 .service-map__dot {
-  width: 0.72rem;
-  height: 0.72rem;
+  width: 0.58rem;
+  height: 0.58rem;
   display: block;
   border-radius: 999px;
   background: #1e8cff;
-  box-shadow: 0 0 0 3px rgba(30, 140, 255, 0.16), 0 0 16px rgba(30, 140, 255, 0.55);
+  box-shadow: 0 0 0 2px rgba(30, 140, 255, 0.2), 0 0 12px rgba(30, 140, 255, 0.58);
 }
 
 .service-map__pin {
-  width: 1.18rem;
-  height: 1.18rem;
+  width: 1rem;
+  height: 1rem;
   display: block;
   border-radius: 999px 999px 999px 0;
   background: #ff3b30;
   transform: rotate(-45deg);
-  box-shadow: 0 0 0 4px rgba(255, 59, 48, 0.16), 0 0 20px rgba(255, 59, 48, 0.65);
+  box-shadow: 0 0 0 3px rgba(255, 59, 48, 0.18), 0 0 16px rgba(255, 59, 48, 0.68);
 }
 
 .service-map__pin::after {
   content: '';
   position: absolute;
-  width: 0.32rem;
-  height: 0.32rem;
+  width: 0.26rem;
+  height: 0.26rem;
   border-radius: 999px;
   background: #ffffff;
   top: 50%;
@@ -1372,7 +1390,7 @@ body.is-modal-open {
 
 .service-map__marker-label {
   position: absolute;
-  left: 1rem;
+  left: 0.9rem;
   top: 50%;
   transform: translateY(-50%);
   white-space: nowrap;
@@ -1386,13 +1404,13 @@ body.is-modal-open {
 
 .service-map__marker-label--left {
   left: auto;
-  right: 1rem;
+  right: 0.9rem;
   text-align: right;
 }
 
 .service-map__marker-label--coast {
-  right: 1.5rem;
-  top: calc(50% + 0.5rem);
+  right: 1.25rem;
+  top: 50%;
 }
 
 .service-map__marker-label--home {
@@ -1473,23 +1491,6 @@ body.is-modal-open {
 }
 
 
-.contact__motion {
-  align-self: start;
-  justify-self: center;
-  width: min(30vw, 360px);
-  margin-top: clamp(18.5rem, 32.5vw, 21.5rem);
-  transform: translateX(clamp(-10rem, -11vw, -6rem));
-  pointer-events: none;
-}
-
-.contact__motion-video {
-  display: block;
-  width: 100%;
-  height: auto;
-  filter: invert(1) sepia(0.12) saturate(1.4) hue-rotate(8deg) brightness(1.02);
-  opacity: 0.9;
-}
-
 .contact__value--stack {
   display: flex;
   flex-direction: column;
@@ -1505,10 +1506,6 @@ body.is-modal-open {
 @media (max-width: 900px) {
   .contact__layout {
     grid-template-columns: 1fr;
-  }
-
-  .contact__motion {
-    display: none;
   }
 }
 
@@ -1726,7 +1723,7 @@ a.contact__value:hover { color: var(--cream); }
   .trusted-by__track { animation-duration: 28s; }
 
   /* Reviews */
-  .reviews-grid { grid-template-columns: 1fr; }
+  .reviews-grid { grid-template-columns: none; }
 
   /* Work */
   .work-card { flex: 0 0 clamp(240px, 80vw, 340px); }

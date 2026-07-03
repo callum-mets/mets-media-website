@@ -190,27 +190,6 @@
     });
   }
 
-
-
-  /* ---- CONTACT MOTION GRAPHIC ------------------------------- */
-  const contactMotionVideo = document.querySelector('.contact__motion-video');
-
-  if (contactMotionVideo && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    const maxMotionPlays = 4;
-    let motionPlays = 1;
-
-    contactMotionVideo.addEventListener('ended', () => {
-      if (motionPlays >= maxMotionPlays) {
-        contactMotionVideo.pause();
-        return;
-      }
-
-      motionPlays += 1;
-      contactMotionVideo.currentTime = 0;
-      contactMotionVideo.play().catch(() => {});
-    });
-  }
-
   /* ---- CTA SHINE / PULSE ------------------------------------ */
   const primaryCtas = document.querySelectorAll('.btn--primary');
 
