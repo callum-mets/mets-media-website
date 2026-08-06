@@ -12,12 +12,27 @@ fields.forEach((field) => {
   field.addEventListener("input", () => {
     state[field.name] = field.value.trim();
     persist();
+    if (field.name === "name") updateNameSlots();
   });
 });
 
 function persist() {
   localStorage.setItem(storageKey, JSON.stringify(state));
   sessionStorage.setItem("metsApplyStep", String(currentStep));
+}
+
+function firstNameOf(fullName) {
+  return (fullName || "").trim().split(/\s+/)[0] || "";
+}
+
+function updateNameSlots() {
+  const first = firstNameOf(state.name);
+  document.querySelectorAll("[data-name-slot='thanks']").forEach((el) => {
+    el.textContent = first ? ` ${first}` : "";
+  });
+  document.querySelectorAll("[data-name-slot='perfect']").forEach((el) => {
+    el.textContent = first ? `, ${first}` : "";
+  });
 }
 
 function showStep(index) {
@@ -30,7 +45,7 @@ function showStep(index) {
 }
 
 function activeInputs() {
-  return Array.from(steps[currentStep].querySelectorAll("input, textarea"));
+  return Array.from(steps[currentStep].querySelectorAll("input[required], textarea[required]"));
 }
 
 function validateCurrentStep() {
@@ -60,10 +75,36 @@ document.querySelectorAll("[data-back]").forEach((button) => {
 });
 
 document.querySelectorAll("[data-choice-group]").forEach((group) => {
+  const key = group.dataset.choiceGroup;
+  const isMulti = group.hasAttribute("data-multi");
+
+  if (isMulti) {
+    if (!Array.isArray(state[key])) state[key] = [];
+    group.querySelectorAll("[data-value]").forEach((button) => {
+      const selected = state[key].includes(button.dataset.value);
+      button.classList.toggle("is-selected", selected);
+      button.setAttribute("aria-pressed", String(selected));
+    });
+  }
+
   group.addEventListener("click", (event) => {
     const button = event.target.closest("[data-value]");
     if (!button) return;
-    const key = group.dataset.choiceGroup;
+
+    if (isMulti) {
+      const values = state[key];
+      const selected = button.classList.toggle("is-selected");
+      button.setAttribute("aria-pressed", String(selected));
+      if (selected) {
+        values.push(button.dataset.value);
+      } else {
+        const i = values.indexOf(button.dataset.value);
+        if (i > -1) values.splice(i, 1);
+      }
+      persist();
+      return;
+    }
+
     state[key] = button.dataset.value;
     persist();
     window.setTimeout(() => showStep(currentStep + 1), 140);
@@ -83,4 +124,5 @@ form.addEventListener("submit", (event) => {
   window.location.href = "/verify/";
 });
 
+updateNameSlots();
 showStep(currentStep);

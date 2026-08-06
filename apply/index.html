@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Apply | Mets Media House</title>
     <meta name="description" content="Apply for a free Mets Media House Site Content Audit.">
-    <link rel="stylesheet" href="/assets/styles.css?v=offer-dark-1">
+    <link rel="stylesheet" href="/assets/styles.css?v=offer-dark-2">
   </head>
   <body>
     <main class="shell">
@@ -14,44 +14,41 @@
 
         <form id="surveyForm" novalidate>
           <section class="step is-active" data-step="0">
-            <p class="eyebrow">Application step 1 of 6</p>
+            <p class="eyebrow">Let's get started</p>
             <div class="question">
-              <h1>Let's find out if we're a good fit. First, what's your website URL?</h1>
-              <p class="subtext">(If you don't have one, type 'don't have one')</p>
-            </div>
-            <div class="field">
-              <input id="website" name="website" type="text" autocomplete="url" required>
-              <p class="error">Please enter your website URL, or type "don't have one".</p>
+              <h1>Before we book you in, we've just got a few quick questions to understand exactly what you need.</h1>
+              <p class="subtext">Takes about 60 seconds. Then you'll pick a time that suits you.</p>
             </div>
             <div class="actions">
-              <button class="primary" type="button" data-next>Continue →</button>
+              <button class="primary" type="button" data-next>Let's go →</button>
             </div>
           </section>
 
           <section class="step" data-step="1">
-            <p class="eyebrow">Application step 2 of 6</p>
+            <p class="eyebrow">Application step 1 of 8</p>
             <div class="question">
-              <h1>Briefly describe your business, what you do, and who you are trying to reach.</h1>
+              <h1>First up, what's your name and email?</h1>
             </div>
             <div class="field">
-              <textarea id="business" name="business" required></textarea>
-              <p class="error">Please give us enough context to understand the operation.</p>
+              <input id="name" name="name" type="text" autocomplete="name" placeholder="Name" required>
+            </div>
+            <div class="field">
+              <input id="email" name="email" type="email" autocomplete="email" placeholder="Email address" required>
+              <p class="error">Please enter your name and a valid email address.</p>
             </div>
             <div class="actions">
-              <button class="secondary" type="button" data-back>Back</button>
               <button class="primary" type="button" data-next>Continue →</button>
             </div>
           </section>
 
           <section class="step" data-step="2">
-            <p class="eyebrow">Application step 3 of 6</p>
+            <p class="eyebrow">Application step 2 of 8</p>
             <div class="question">
-              <h1>Be honest... what's the #1 biggest obstacle holding you back from getting the site footage you need?</h1>
-              <p class="subtext">(Don't skip the hairy details. We need to know what's actually holding you back).</p>
+              <h1>Great, thanks<span data-name-slot="thanks"></span>! Briefly describe what your company does and its main services.</h1>
             </div>
             <div class="field">
-              <textarea id="obstacle" name="obstacle" required></textarea>
-              <p class="error">Please tell us what is actually getting in the way.</p>
+              <textarea id="business" name="business" placeholder="e.g. We're a civil earthworks contractor working across SEQ mine sites…" required></textarea>
+              <p class="error">Please give us a brief description of your company.</p>
             </div>
             <div class="actions">
               <button class="secondary" type="button" data-back>Back</button>
@@ -60,15 +57,19 @@
           </section>
 
           <section class="step" data-step="3">
-            <p class="eyebrow">Application step 4 of 6</p>
+            <p class="eyebrow">Application step 3 of 8</p>
             <div class="question">
-              <h1>When are you looking to get started?</h1>
+              <h1>What state is your company based in?</h1>
             </div>
-            <div class="choices" data-choice-group="timeline">
-              <button class="choice" type="button" data-value="Immediately">Immediately</button>
-              <button class="choice" type="button" data-value="In 2-4 weeks">In 2-4 weeks</button>
-              <button class="choice" type="button" data-value="6 weeks+">6 weeks+</button>
-              <button class="choice" type="button" data-value="I'm just looking around">I'm just looking around</button>
+            <div class="choices choices-2col" data-choice-group="state">
+              <button class="choice" type="button" data-value="Queensland">Queensland</button>
+              <button class="choice" type="button" data-value="New South Wales">New South Wales</button>
+              <button class="choice" type="button" data-value="Victoria">Victoria</button>
+              <button class="choice" type="button" data-value="Western Australia">Western Australia</button>
+              <button class="choice" type="button" data-value="South Australia">South Australia</button>
+              <button class="choice" type="button" data-value="Tasmania">Tasmania</button>
+              <button class="choice" type="button" data-value="Northern Territory">Northern Territory</button>
+              <button class="choice" type="button" data-value="ACT">ACT</button>
             </div>
             <div class="actions">
               <button class="secondary" type="button" data-back>Back</button>
@@ -76,13 +77,18 @@
           </section>
 
           <section class="step" data-step="4">
-            <p class="eyebrow">Application step 5 of 6</p>
+            <p class="eyebrow">Application step 4 of 8</p>
             <div class="question">
-              <h1>Do you pinky promise that if you qualify for a phone call, you will show up at the selected time?</h1>
+              <h1>What's your monthly marketing budget?</h1>
+              <p class="subtext">We ask this first to check we'd be a good fit, and to identify the best strategies for growth within your budget.</p>
             </div>
-            <div class="promise-grid" data-choice-group="promise">
-              <button class="choice" type="button" data-value="No">👎 No</button>
-              <button class="choice" type="button" data-value="Yes">👍 Yes</button>
+            <div class="choices choices-2col" data-choice-group="budget">
+              <button class="choice" type="button" data-value="Under $5k">Under $5k</button>
+              <button class="choice" type="button" data-value="$5k - $10k">$5k - $10k</button>
+              <button class="choice" type="button" data-value="$10k - $20k">$10k - $20k</button>
+              <button class="choice" type="button" data-value="$20k - $35k">$20k - $35k</button>
+              <button class="choice" type="button" data-value="$35k - $50k">$35k - $50k</button>
+              <button class="choice" type="button" data-value="$50k+">$50k+</button>
             </div>
             <div class="actions">
               <button class="secondary" type="button" data-back>Back</button>
@@ -90,21 +96,101 @@
           </section>
 
           <section class="step" data-step="5">
-            <p class="eyebrow">Final application step</p>
+            <p class="eyebrow">Application step 5 of 8</p>
             <div class="question">
-              <h1>BOOM! 👊 It looks like we can help you capture your site capability. Enter your details below to see if you qualify.</h1>
+              <h1>What's your website URL?</h1>
+              <p class="subtext">(If you don't have one, type 'don't have one'.)</p>
             </div>
-            <div class="capture-grid">
-              <input id="firstName" name="firstName" type="text" autocomplete="given-name" placeholder="First Name" required>
-              <input id="lastName" name="lastName" type="text" autocomplete="family-name" placeholder="Last Name" required>
-              <input id="mobile" name="mobile" type="tel" autocomplete="tel" placeholder="Mobile Number" required>
-              <input id="company" name="company" type="text" autocomplete="organization" placeholder="Company Name" required>
-              <input class="full" id="email" name="email" type="email" autocomplete="email" placeholder="Email Address" required>
+            <div class="field">
+              <input id="website" name="website" type="text" autocomplete="url" required>
+              <p class="error">Please enter your website URL, or type "don't have one".</p>
             </div>
-            <p class="error" id="captureError">Please complete all details before submitting.</p>
             <div class="actions">
               <button class="secondary" type="button" data-back>Back</button>
-              <button class="primary" type="submit">Learn more</button>
+              <button class="primary" type="button" data-next>Continue →</button>
+            </div>
+          </section>
+
+          <section class="step" data-step="6">
+            <p class="eyebrow">Application step 6 of 8</p>
+            <div class="question">
+              <h1>What's made you need content?</h1>
+              <p class="subtext">Select all that apply, or briefly describe it below.</p>
+            </div>
+            <div class="choices choices-2col" data-choice-group="contentReasons" data-multi>
+              <button class="choice" type="button" data-value="Winning new work/clients">Winning new work/clients</button>
+              <button class="choice" type="button" data-value="Winning new tenders & contracts">Winning new tenders & contracts</button>
+              <button class="choice" type="button" data-value="Content for website">Content for website</button>
+              <button class="choice" type="button" data-value="Professional high quality content">Professional high quality content</button>
+              <button class="choice" type="button" data-value="Recruitment & attracting workers">Recruitment & attracting workers</button>
+              <button class="choice" type="button" data-value="Safety & compliance documentation">Safety & compliance documentation</button>
+              <button class="choice" type="button" data-value="Building our social media presence">Building our social media presence</button>
+              <button class="choice" type="button" data-value="Marketing & lead generation">Marketing & lead generation</button>
+              <button class="choice" type="button" data-value="Rebrand / new website">Rebrand / new website</button>
+              <button class="choice" type="button" data-value="Investor & stakeholder communications">Investor & stakeholder communications</button>
+              <button class="choice" type="button" data-value="Something else">Something else</button>
+            </div>
+            <div class="field">
+              <textarea id="contentReasonsOther" name="contentReasonsOther" placeholder="Or briefly describe it in your own words…"></textarea>
+            </div>
+            <div class="actions">
+              <button class="secondary" type="button" data-back>Back</button>
+              <button class="primary" type="button" data-next>Continue →</button>
+            </div>
+          </section>
+
+          <section class="step" data-step="7">
+            <p class="eyebrow">Application step 7 of 8</p>
+            <div class="question">
+              <h1>Which of our services best suit what you're after?</h1>
+              <p class="subtext">Tap all that apply, or type what you need below.</p>
+            </div>
+            <div class="choices choices-emoji" data-choice-group="services" data-multi>
+              <button class="choice choice--emoji" type="button" data-value="Videography"><span class="icon">🎥</span>Videography</button>
+              <button class="choice choice--emoji" type="button" data-value="Brand Film"><span class="icon">🎬</span>Brand Film</button>
+              <button class="choice choice--emoji" type="button" data-value="Recruitment & Culture"><span class="icon">👷</span>Recruitment &amp; Culture</button>
+              <button class="choice choice--emoji" type="button" data-value="Safety & Site Docs"><span class="icon">🦺</span>Safety &amp; Site Docs</button>
+              <button class="choice choice--emoji" type="button" data-value="Capability Showcase"><span class="icon">🏗</span>Capability Showcase</button>
+              <button class="choice choice--emoji" type="button" data-value="Social Reels"><span class="icon">📱</span>Social Reels</button>
+              <button class="choice choice--emoji" type="button" data-value="Photography"><span class="icon">📸</span>Photography</button>
+              <button class="choice choice--emoji" type="button" data-value="Drone & Aerial"><span class="icon">🚁</span>Drone &amp; Aerial</button>
+              <button class="choice choice--emoji" type="button" data-value="Website & Digital"><span class="icon">💻</span>Website &amp; Digital</button>
+              <button class="choice choice--emoji" type="button" data-value="Not sure yet"><span class="icon">🤝</span>Not sure yet</button>
+            </div>
+            <div class="field">
+              <textarea id="servicesOther" name="servicesOther" placeholder="Or type what you're after in your own words…"></textarea>
+            </div>
+            <div class="actions">
+              <button class="secondary" type="button" data-back>Back</button>
+              <button class="primary" type="button" data-next>Continue →</button>
+            </div>
+          </section>
+
+          <section class="step" data-step="8">
+            <p class="eyebrow">Application step 8 of 8</p>
+            <div class="question">
+              <h1>When are you looking to get started?</h1>
+            </div>
+            <div class="choices" data-choice-group="timeline">
+              <button class="choice" type="button" data-value="Immediately">Immediately</button>
+              <button class="choice" type="button" data-value="In 2-4 weeks">In 2–4 weeks</button>
+              <button class="choice" type="button" data-value="6 weeks+">6 weeks+</button>
+              <button class="choice" type="button" data-value="Just exploring for now">Just exploring for now</button>
+            </div>
+            <div class="actions">
+              <button class="secondary" type="button" data-back>Back</button>
+            </div>
+          </section>
+
+          <section class="step" data-step="9">
+            <p class="eyebrow">You're all set 🎉</p>
+            <div class="question">
+              <h1>Perfect<span data-name-slot="perfect"></span>. The last step is to book a time.</h1>
+              <p class="subtext">Pick a slot that suits you. We're looking forward to meeting you and getting started.</p>
+            </div>
+            <div class="actions">
+              <button class="secondary" type="button" data-back>Back</button>
+              <button class="primary" type="submit">Book your time →</button>
             </div>
           </section>
         </form>
