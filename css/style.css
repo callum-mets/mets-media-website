@@ -1,21 +1,30 @@
 /* ================================================================
    METS MEDIA - style.css
-   Pure black + cream. No third colour - footage provides it.
-   Palette: #000000 bg · #FAF7E8 cream · Manrope
+   True black, bone and Mets Gold.
+   Palette: #000000 black · #E8E8E8 bone · #C9A227 gold · Manrope
+   Note: backgrounds stay true black, not the #0A0A0A ink in Guidelines v1.1 s08.
 ================================================================ */
 
 /* ---- TOKENS -------------------------------------------------- */
 :root {
-  --cream:         #FAF7E8;
-  --cream-dim:     #e8e4d5;
-  --cream-muted:   rgba(250, 247, 232, 0.55);
-  --cream-faint:   rgba(250, 247, 232, 0.22);
-  --cream-border:  rgba(250, 247, 232, 0.1);
-  --cream-glow:    rgba(250, 247, 232, 0.06);
+  /* Neutrals. Names kept as --cream* so existing rules keep working. */
+  --cream:         #E8E8E8;   /* bone, body copy on dark */
+  --cream-dim:     #cfcfcf;
+  --cream-muted:   rgba(232, 232, 232, 0.58);
+  --cream-faint:   rgba(232, 232, 232, 0.24);
+  --cream-border:  #2A2A2A;   /* steel */
+  --cream-glow:    rgba(201, 162, 39, 0.10);
 
-  --bg:            #000000;
+  --bg:            #000000;   /* true black, kept per Callum's call */
   --surface:       #080808;
   --surface-2:     #101010;
+
+  /* Accent. Roughly 10 percent of any layout. */
+  --gold:          #C9A227;
+  --gold-light:    #E3BE5A;
+  --gold-deep:     #A17F17;
+  --ink:           #0A0A0A;
+  --white:         #FFFFFF;
 
   --font:          'Manrope', system-ui, sans-serif;
   --nav-h:         108px;   /* logo 60px + 24px top + 24px bottom */
@@ -63,7 +72,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--cream-muted);
+  color: var(--gold);
   margin-bottom: 1rem;
 }
 
@@ -71,7 +80,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   font-size: clamp(2rem, 4.5vw, 3rem);
   font-weight: 800;
   line-height: 1.1;
-  color: var(--cream);
+  color: var(--white);
   margin-bottom: 1.25rem;
 }
 
@@ -85,7 +94,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   margin-bottom: clamp(2.5rem, 6vw, 4rem);
 }
 
-/* ---- BUTTONS - cream pills on black ------------------------- */
+/* ---- BUTTONS - gold pills on ink ---------------------------- */
 .btn {
   position: relative;
   display: inline-flex;
@@ -105,8 +114,8 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 .btn:active { transform: scale(0.97); }
 
 .btn--primary {
-  background: var(--cream);
-  color: #000000;
+  background: var(--gold);
+  color: var(--ink);
 }
 
 .btn--primary::after {
@@ -121,7 +130,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   pointer-events: none;
 }
 
-.btn--primary:hover { background: #ffffff; }
+.btn--primary:hover { background: var(--gold-light); }
 
 .btn--primary.cta-polish {
   animation: cta-pulse 1.15s ease-out 2;
@@ -145,12 +154,12 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 
 .btn--ghost {
   background: transparent;
-  color: var(--cream);
-  border: 1.5px solid rgba(250, 247, 232, 0.35);
+  color: var(--gold);
+  border: 1.5px solid rgba(201, 162, 39, 0.55);
 }
 .btn--ghost:hover {
   border-color: var(--cream);
-  background: rgba(250, 247, 232, 0.06);
+  background: rgba(232, 232, 232, 0.06);
 }
 
 .btn--full { width: 100%; justify-content: center; }
@@ -222,13 +231,18 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 }
 .nav__link:hover { color: var(--cream); }
 
+/* Over the hero the links stay neutral so they read on any frame of the
+   video. Once the header picks up its solid background they go gold. */
+.site-header.scrolled .nav__link { color: var(--gold); }
+.site-header.scrolled .nav__link:hover { color: var(--gold-light); }
+
 .nav__link--cta {
-  background: var(--cream);
-  color: #000000 !important;
+  background: var(--gold);
+  color: var(--ink) !important;
   padding: 0.5rem 1.2rem;
   margin-left: 0.5rem;
 }
-.nav__link--cta:hover { background: #ffffff; }
+.nav__link--cta:hover { background: var(--gold-light); }
 
 /* Hamburger - visible by default; hidden on wide screens via min-width query below */
 .nav__toggle {
@@ -308,7 +322,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   font-weight: 500;
   line-height: 1.4;
   letter-spacing: 0.02em;
-  color: #FAF7E8;
+  color: var(--white);
   margin: 0 auto;
   max-width: none;
   white-space: nowrap;
@@ -319,7 +333,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   font-family: "Bebas Neue", sans-serif;
   font-size: clamp(0.7rem, 1vw, 0.85rem);
   letter-spacing: 0.18em;
-  color: #FAF7E8;
+  color: var(--white);
   margin: 0.7rem 0 0;
   opacity: 0.85;
   text-transform: uppercase;
@@ -380,7 +394,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   font-weight: 700;
   letter-spacing: 0.3em;
   text-transform: uppercase;
-  color: var(--cream-muted);
+  color: var(--gold);
   margin: 0 0 2.5rem;
 }
 
@@ -488,7 +502,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   font-size: clamp(0.9rem, 1.1vw, 1.05rem);
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--cream-muted);
+  color: var(--gold);
   margin: 0 0 1rem;
   font-weight: 700;
 }
@@ -529,7 +543,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   flex-direction: column;
 }
 .capv5__tile:hover {
-  border-color: rgba(250, 247, 232, 0.2);
+  border-color: rgba(232, 232, 232, 0.2);
   transform: translateY(-4px);
 }
 
@@ -567,7 +581,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 .capv5__num {
   font-size: 1.2rem;
   letter-spacing: 0.16em;
-  color: var(--cream);
+  color: var(--gold);
   margin: 0 0 1.25rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -835,7 +849,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   align-items: center;
   justify-content: center;
   background: rgba(0, 0, 0, 0.45);
-  border: 1.5px solid rgba(250, 247, 232, 0.85);
+  border: 1.5px solid rgba(232, 232, 232, 0.85);
   color: var(--cream);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
@@ -983,7 +997,7 @@ body.is-modal-open {
 }
 
 .review-stars {
-  color: var(--cream);
+  color: var(--gold);
   font-size: 0.8rem;
   letter-spacing: 0.25em;
   margin-bottom: 0.65rem;
@@ -1222,7 +1236,7 @@ body.is-modal-open {
 }
 
 .how-we-work .section-intro {
-  color: rgba(250, 247, 232, 0.85);
+  color: rgba(232, 232, 232, 0.85);
   text-shadow: 0 1px 8px rgba(0, 0, 0, 0.7);
 }
 
@@ -1237,15 +1251,15 @@ body.is-modal-open {
 .hww__step {
   position: relative;
   padding-top: 1.75rem;
-  border-top: 1px solid rgba(250, 247, 232, 0.25);
+  border-top: 1px solid rgba(232, 232, 232, 0.25);
   transition: border-top-color 0.25s;
 }
-.hww__step:hover { border-top-color: rgba(250, 247, 232, 0.55); }
+.hww__step:hover { border-top-color: rgba(232, 232, 232, 0.55); }
 
 .hww__num {
   font-size: 2.8rem;
   font-weight: 800;
-  color: rgba(250, 247, 232, 0.5);
+  color: rgba(201, 162, 39, 0.75);
   line-height: 1;
   margin-bottom: 1.25rem;
   font-variant-numeric: tabular-nums;
@@ -1335,8 +1349,8 @@ body.is-modal-open {
   position: absolute;
   inset: 4% 2% 8%;
   z-index: 0;
-  background: radial-gradient(ellipse at center, rgba(250, 247, 232, 0.05) 0%, rgba(250, 247, 232, 0.025) 42%, rgba(0, 0, 0, 0) 74%);
-  filter: blur(18px);
+  background: radial-gradient(ellipse at center, rgba(232, 232, 232, 0.018) 0%, rgba(232, 232, 232, 0.008) 42%, rgba(0, 0, 0, 0) 74%);
+  filter: blur(22px);
   pointer-events: none;
 }
 
@@ -1346,7 +1360,7 @@ body.is-modal-open {
   width: 100%;
   height: auto;
   opacity: 0.95;
-  filter: drop-shadow(0 0 16px rgba(250, 247, 232, 0.08));
+  filter: drop-shadow(0 0 7px rgba(232, 232, 232, 0.028));
 }
 
 .service-map__marker {
@@ -1394,7 +1408,7 @@ body.is-modal-open {
   top: 50%;
   transform: translateY(-50%);
   white-space: nowrap;
-  color: rgba(250, 247, 232, 0.78);
+  color: rgba(232, 232, 232, 0.78);
   font-size: 0.72rem;
   font-weight: 700;
   line-height: 1.15;
@@ -1425,7 +1439,7 @@ body.is-modal-open {
 }
 
 .service-map__marker-label small {
-  color: rgba(250, 247, 232, 0.78);
+  color: rgba(232, 232, 232, 0.78);
   font-size: 0.68rem;
   font-weight: 600;
   letter-spacing: 0;
@@ -1520,7 +1534,7 @@ body.is-modal-open {
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--cream-faint);
+  color: var(--gold);
 }
 
 .contact__value {
