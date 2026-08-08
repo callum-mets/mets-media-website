@@ -84,6 +84,50 @@ function suggestEmailFix(value) {
   return fixed ? `${local}@${fixed}` : null;
 }
 
+// Ask DNS whether a domain can actually receive mail. Catches every typo, not
+// just the ones on a list. Returns true, false, or null when we could not tell.
+const domainCache = new Map();
+async function mailDomainExists(domain) {
+  if (domainCache.has(domain)) return domainCache.get(domain);
+  const controller = new AbortController();
+  const timer = window.setTimeout(() => controller.abort(), 2500);
+  try {
+    const res = await fetch(
+      `https://cloudflare-dns.com/dns-query?name=${encodeURIComponent(domain)}&type=MX`,
+      { headers: { accept: "application/dns-json" }, signal: controller.signal }
+    );
+    if (!res.ok) return null;
+    const data = await res.json();
+    // NXDOMAIN means the domain does not exist at all.
+    if (data.Status === 3) {
+      domainCache.set(domain, false);
+      return false;
+    }
+    if (data.Status !== 0) return null;
+    const hasMx = Array.isArray(data.Answer) && data.Answer.some((a) => a.type === 15);
+    domainCache.set(domain, hasMx);
+    return hasMx;
+  } catch (error) {
+    return null; // offline, blocked or slow. Never block the applicant.
+  } finally {
+    window.clearTimeout(timer);
+  }
+}
+
+// Returns null when fine, or a message when the address looks unreachable.
+async function emailDomainProblem(input) {
+  const value = (input.value || "").trim().toLowerCase();
+  const domain = value.slice(value.lastIndexOf("@") + 1);
+  if (!domain) return null;
+  if (input.dataset.domainConfirmed === domain) return null;
+  const exists = await mailDomainExists(domain);
+  if (exists === false) {
+    input.dataset.domainConfirmed = domain;
+    return `We cannot find a mail server for ${domain}. Check the spelling, or press Continue again if it is correct.`;
+  }
+  return null;
+}
+
 function validateCurrentStep() {
   const inputs = activeInputs();
   let valid = true;
@@ -118,8 +162,24 @@ function validateCurrentStep() {
 }
 
 document.querySelectorAll("[data-next]").forEach((button) => {
-  button.addEventListener("click", () => {
+  button.addEventListener("click", async () => {
     if (!validateCurrentStep()) return;
+
+    const emailInput = steps[currentStep].querySelector('input[type="email"]');
+    if (emailInput) {
+      const error = steps[currentStep].querySelector(".error");
+      button.disabled = true;
+      const problem = await emailDomainProblem(emailInput);
+      button.disabled = false;
+      if (problem) {
+        if (error) {
+          error.textContent = problem;
+          error.classList.add("is-visible");
+        }
+        return;
+      }
+    }
+
     showStep(currentStep + 1);
   });
 });
