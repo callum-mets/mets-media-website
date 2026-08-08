@@ -111,7 +111,7 @@ document.querySelectorAll("[data-choice-group]").forEach((group) => {
   });
 });
 
-form.addEventListener("submit", (event) => {
+form.addEventListener("submit", async (event) => {
   event.preventDefault();
   if (!validateCurrentStep()) return;
 
@@ -119,8 +119,31 @@ form.addEventListener("submit", (event) => {
     state[field.name] = field.value.trim();
   });
   state.submittedAt = new Date().toISOString();
+  state.referrer = document.referrer || "";
+  state.landingPage = window.location.href;
   persist();
 
+  const submitButton = form.querySelector('button[type="submit"]');
+  if (submitButton) {
+    submitButton.disabled = true;
+    submitButton.textContent = "Sending\u2026";
+  }
+
+  // Let them through even if the send fails. A lost application is worse
+  // than a lost email, and the booking form is the backstop.
+  try {
+    const res = await fetch("/api/apply", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(state),
+    });
+    state.delivered = res.ok;
+  } catch (error) {
+    state.delivered = false;
+  }
+  persist();
+
+  sessionStorage.setItem("metsApplyComplete", "1");
   window.location.href = "/verify/";
 });
 

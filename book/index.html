@@ -8,6 +8,17 @@
     <link rel="stylesheet" href="/assets/styles.css?v=offer-dark-1">
   </head>
   <body>
+    <script>
+      // Only people who finished /apply get through. ?skip=1 is the manual
+      // bypass for links we hand out directly, e.g. a referral.
+      (function () {
+        var bypass = new URLSearchParams(window.location.search).has("skip");
+        if (bypass) sessionStorage.setItem("metsApplyComplete", "1");
+        if (sessionStorage.getItem("metsApplyComplete") !== "1") {
+          window.location.replace("/apply/");
+        }
+      })();
+    </script>
     <main class="book-shell">
       <section class="book-wrap">
         <p class="eyebrow">Application accepted</p>

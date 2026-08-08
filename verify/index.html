@@ -8,6 +8,17 @@
     <link rel="stylesheet" href="/assets/styles.css?v=offer-dark-1">
   </head>
   <body>
+    <script>
+      // Only people who finished /apply get through. ?skip=1 is the manual
+      // bypass for links we hand out directly, e.g. a referral.
+      (function () {
+        var bypass = new URLSearchParams(window.location.search).has("skip");
+        if (bypass) sessionStorage.setItem("metsApplyComplete", "1");
+        if (sessionStorage.getItem("metsApplyComplete") !== "1") {
+          window.location.replace("/apply/");
+        }
+      })();
+    </script>
     <main class="shell">
       <section class="card loading-card" aria-live="polite">
         <p class="eyebrow">Application review</p>
@@ -15,7 +26,7 @@
         <div class="loading-wrap" aria-hidden="true">
           <div class="loading-bar"></div>
         </div>
-        <p class="warning">⚠️ Please be patient as we verify your answers...</p>
+        <p class="warning">Sending your answers through to the team...</p>
       </section>
     </main>
     <script>
