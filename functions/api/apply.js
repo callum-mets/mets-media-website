@@ -28,6 +28,41 @@ const ROWS = [
   ["Timeline", "timeline"],
 ];
 
+const BOOKING_URL = "https://metsmediahouse.com.au/book/?skip=1";
+
+const firstNameOf = (name) => String(name || "").trim().split(/\s+/)[0] || "there";
+
+const looksSendable = (email) => /^[^@\s]+@[^@\s.]+\.[^@\s]{2,}$/.test(String(email || "").trim());
+
+function confirmationHtml(data) {
+  const first = esc(firstNameOf(data.name));
+  return `<div style="font:16px/1.6 -apple-system,Segoe UI,Roboto,sans-serif;color:#111;max-width:520px">
+<p>Thanks ${first}, we have your application.</p>
+<p>If you haven't picked a time yet, you can do that here.</p>
+<p><a href="${BOOKING_URL}" style="display:inline-block;padding:12px 20px;background:#111;color:#fff;text-decoration:none;border-radius:6px">Book your time</a></p>
+<p>Before we speak we will go through your website and socials properly, so we turn up already knowing your operation instead of asking you to walk us through it.</p>
+<p>The call itself is thirty minutes of questions. What you sell, who you are trying to reach, what has worked and what has not. Then we tell you straight what we would do about it.</p>
+<p>Nothing to prepare. Just be somewhere you can talk properly.</p>
+<p>Jordan and Callum<br>Mets Media House</p>
+</div>`;
+}
+
+async function send(env, payload) {
+  const res = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: {
+      authorization: `Bearer ${env.RESEND_API_KEY}`,
+      "content-type": "application/json",
+    },
+    body: JSON.stringify(payload),
+  });
+  if (!res.ok) {
+    console.error("resend failed", res.status, await res.text());
+    return false;
+  }
+  return true;
+}
+
 export async function onRequestPost({ request, env }) {
   let data;
   try {
@@ -74,30 +109,39 @@ export async function onRequestPost({ request, env }) {
     });
   }
 
-  const res = await fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: {
-      authorization: `Bearer ${env.RESEND_API_KEY}`,
-      "content-type": "application/json",
-    },
-    body: JSON.stringify({
-      from,
-      to,
-      reply_to: data.email || undefined,
-      subject: `Application: ${val(data.name)} - ${val(data.business).slice(0, 60)}`,
-      html,
-    }),
+  const notified = await send(env, {
+    from,
+    to,
+    reply_to: data.email || undefined,
+    subject: `Application: ${val(data.name)} - ${val(data.business).slice(0, 60)}`,
+    html,
   });
 
-  if (!res.ok) {
-    console.error("resend failed", res.status, await res.text());
+  // Confirmation to the applicant. Never let this failing affect the response,
+  // the internal notification is the one that matters.
+  let confirmed = false;
+  if (looksSendable(data.email)) {
+    try {
+      confirmed = await send(env, {
+        from,
+        to: [String(data.email).trim()],
+        reply_to: "callum@metsmediahouse.com.au",
+        subject: "We have your application",
+        html: confirmationHtml(data),
+      });
+    } catch (error) {
+      console.error("confirmation send threw", error);
+    }
+  }
+
+  if (!notified) {
     return new Response(JSON.stringify({ ok: false, error: "send failed" }), {
       status: 502,
       headers: { "content-type": "application/json" },
     });
   }
 
-  return new Response(JSON.stringify({ ok: true }), {
+  return new Response(JSON.stringify({ ok: true, confirmed }), {
     headers: { "content-type": "application/json" },
   });
 }

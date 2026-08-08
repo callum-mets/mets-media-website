@@ -48,6 +48,42 @@ function activeInputs() {
   return Array.from(steps[currentStep].querySelectorAll("input[required], textarea[required]"));
 }
 
+const EMAIL_DOMAIN_FIXES = {
+  "gmail.com.au": "gmail.com",
+  "gmail.co": "gmail.com",
+  "gmail.con": "gmail.com",
+  "gmail.cm": "gmail.com",
+  "gmial.com": "gmail.com",
+  "gmai.com": "gmail.com",
+  "gmaill.com": "gmail.com",
+  "gnail.com": "gmail.com",
+  "hotmail.co": "hotmail.com",
+  "hotmail.con": "hotmail.com",
+  "hotmial.com": "hotmail.com",
+  "hotmai.com": "hotmail.com",
+  "homail.com": "hotmail.com",
+  "outlook.co": "outlook.com",
+  "outlook.con": "outlook.com",
+  "outlok.com": "outlook.com",
+  "yahoo.co": "yahoo.com",
+  "yahoo.con": "yahoo.com",
+  "yaho.com": "yahoo.com",
+  "bigpond.con": "bigpond.com",
+  "icloud.co": "icloud.com",
+  "icloud.con": "icloud.com",
+};
+
+// Returns a corrected address when the domain is an obvious typo, else null.
+function suggestEmailFix(value) {
+  const email = (value || "").trim().toLowerCase();
+  const at = email.lastIndexOf("@");
+  if (at < 1) return null;
+  const local = email.slice(0, at);
+  const domain = email.slice(at + 1);
+  const fixed = EMAIL_DOMAIN_FIXES[domain];
+  return fixed ? `${local}@${fixed}` : null;
+}
+
 function validateCurrentStep() {
   const inputs = activeInputs();
   let valid = true;
@@ -59,6 +95,24 @@ function validateCurrentStep() {
   });
 
   const error = steps[currentStep].querySelector(".error");
+
+  // Catch obvious address typos before they cost us a reachable lead.
+  const emailInput = steps[currentStep].querySelector('input[type="email"]');
+  if (valid && emailInput) {
+    const suggestion = suggestEmailFix(emailInput.value);
+    if (suggestion && emailInput.dataset.typoAccepted !== suggestion) {
+      emailInput.value = suggestion;
+      state[emailInput.name] = suggestion;
+      emailInput.dataset.typoAccepted = suggestion;
+      persist();
+      if (error) {
+        error.textContent = `We corrected that to ${suggestion}. Change it back if that is wrong, otherwise carry on.`;
+        error.classList.add("is-visible");
+      }
+      return false;
+    }
+  }
+
   if (error) error.classList.toggle("is-visible", !valid);
   return valid;
 }
