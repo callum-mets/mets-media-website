@@ -24,7 +24,7 @@
             </div>
           </section>
 
-          <section class="step" data-step="1">
+          <section class="step" data-step="1" data-question>
             <p class="eyebrow">Application step 1 of 8</p>
             <div class="question">
               <h1>First up, what's your name and email?</h1>
@@ -41,7 +41,7 @@
             </div>
           </section>
 
-          <section class="step" data-step="2">
+          <section class="step" data-step="2" data-question>
             <p class="eyebrow">Application step 2 of 8</p>
             <div class="question">
               <h1>Great, thanks<span data-name-slot="thanks"></span>! Briefly describe what your company does and its main services.</h1>
@@ -56,7 +56,7 @@
             </div>
           </section>
 
-          <section class="step" data-step="3">
+          <section class="step" data-step="3" data-question>
             <p class="eyebrow">Application step 3 of 8</p>
             <div class="question">
               <h1>What state is your company based in?</h1>
@@ -76,11 +76,11 @@
             </div>
           </section>
 
-          <section class="step" data-step="4">
+          <section class="step" data-step="4" data-question>
             <p class="eyebrow">Application step 4 of 8</p>
             <div class="question">
               <h1>What's your monthly marketing budget?</h1>
-              <p class="subtext">We ask this first to check we'd be a good fit, and to identify the best strategies for growth within your budget.</p>
+              <p class="subtext">We ask so we can check we'd be a good fit, and point you at the strategies that actually work within your budget.</p>
             </div>
             <div class="choices choices-2col" data-choice-group="budget">
               <button class="choice" type="button" data-value="Under $5k">Under $5k</button>
@@ -95,7 +95,7 @@
             </div>
           </section>
 
-          <section class="step" data-step="5">
+          <section class="step" data-step="5" data-question>
             <p class="eyebrow">Application step 5 of 8</p>
             <div class="question">
               <h1>What's your website URL?</h1>
@@ -111,13 +111,13 @@
             </div>
           </section>
 
-          <section class="step" data-step="6">
+          <section class="step" data-step="6" data-question>
             <p class="eyebrow">Application step 6 of 8</p>
             <div class="question">
               <h1>What's made you need content?</h1>
               <p class="subtext">Select all that apply, or briefly describe it below.</p>
             </div>
-            <div class="choices choices-2col" data-choice-group="contentReasons" data-multi>
+            <div class="choices choices-2col" data-choice-group="contentReasons" data-multi data-require-answer="contentReasonsOther">
               <button class="choice" type="button" data-value="Winning new work/clients">Winning new work/clients</button>
               <button class="choice" type="button" data-value="Winning new tenders & contracts">Winning new tenders & contracts</button>
               <button class="choice" type="button" data-value="Content for website">Content for website</button>
@@ -132,6 +132,7 @@
             </div>
             <div class="field">
               <textarea id="contentReasonsOther" name="contentReasonsOther" placeholder="Or briefly describe it in your own words…"></textarea>
+              <p class="error">Pick at least one, or tell us in your own words.</p>
             </div>
             <div class="actions">
               <button class="secondary" type="button" data-back>Back</button>
@@ -139,13 +140,13 @@
             </div>
           </section>
 
-          <section class="step" data-step="7">
+          <section class="step" data-step="7" data-question>
             <p class="eyebrow">Application step 7 of 8</p>
             <div class="question">
               <h1>Which of our services best suit what you're after?</h1>
               <p class="subtext">Tap all that apply, or type what you need below.</p>
             </div>
-            <div class="choices choices-emoji" data-choice-group="services" data-multi>
+            <div class="choices choices-emoji" data-choice-group="services" data-multi data-require-answer="servicesOther">
               <button class="choice choice--emoji" type="button" data-value="Videography"><span class="icon">🎥</span>Videography</button>
               <button class="choice choice--emoji" type="button" data-value="Brand Film"><span class="icon">🎬</span>Brand Film</button>
               <button class="choice choice--emoji" type="button" data-value="Recruitment & Culture"><span class="icon">👷</span>Recruitment &amp; Culture</button>
@@ -159,6 +160,7 @@
             </div>
             <div class="field">
               <textarea id="servicesOther" name="servicesOther" placeholder="Or type what you're after in your own words…"></textarea>
+              <p class="error">Pick at least one, or tell us what you need. "Not sure yet" is a fine answer.</p>
             </div>
             <div class="actions">
               <button class="secondary" type="button" data-back>Back</button>
@@ -166,7 +168,7 @@
             </div>
           </section>
 
-          <section class="step" data-step="8">
+          <section class="step" data-step="8" data-question>
             <p class="eyebrow">Application step 8 of 8</p>
             <div class="question">
               <h1>When are you looking to get started?</h1>

@@ -35,12 +35,24 @@ function updateNameSlots() {
   });
 }
 
+// Only the steps marked data-question count towards the bar. The intro and the
+// final booking step are not questions, so the bar reads 0% and 100% on those.
+// Keeping this derived from the DOM means a reorder cannot desync it again.
+const questionSteps = steps.filter((step) => step.hasAttribute("data-question"));
+
+function progressFor(index) {
+  const step = steps[index];
+  const position = questionSteps.indexOf(step);
+  if (position === -1) return index === 0 ? 0 : 100;
+  return ((position + 1) / questionSteps.length) * 100;
+}
+
 function showStep(index) {
   currentStep = Math.max(0, Math.min(index, steps.length - 1));
   steps.forEach((step, stepIndex) => {
     step.classList.toggle("is-active", stepIndex === currentStep);
   });
-  progressBar.style.width = `${((currentStep + 1) / steps.length) * 100}%`;
+  progressBar.style.width = `${progressFor(currentStep)}%`;
   persist();
 }
 
@@ -138,6 +150,17 @@ function validateCurrentStep() {
     valid = valid && inputValid;
   });
 
+  // Multi-select steps marked data-require-answer need either a chosen option
+  // or something typed in the companion box, so applications cannot land with
+  // no stated need and no stated service.
+  steps[currentStep].querySelectorAll("[data-require-answer]").forEach((group) => {
+    const chosen = state[group.dataset.choiceGroup];
+    const hasChoice = Array.isArray(chosen) && chosen.length > 0;
+    const other = document.getElementById(group.dataset.requireAnswer);
+    const hasText = Boolean(other && other.value.trim());
+    if (!hasChoice && !hasText) valid = false;
+  });
+
   const error = steps[currentStep].querySelector(".error");
 
   // Catch obvious address typos before they cost us a reachable lead.
@@ -216,6 +239,9 @@ document.querySelectorAll("[data-choice-group]").forEach((group) => {
         if (i > -1) values.splice(i, 1);
       }
       persist();
+      // Clear the "pick at least one" warning as soon as they pick one.
+      const stepError = group.closest(".step").querySelector(".error");
+      if (stepError) stepError.classList.remove("is-visible");
       return;
     }
 
