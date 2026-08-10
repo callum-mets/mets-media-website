@@ -86,7 +86,8 @@
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32.png">
   <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png">
   <link rel="shortcut icon" href="images/favicon/favicon-32.png">
-  <link rel="stylesheet" href="css/style.css?v=20260807-gold-palette-5">
+  <link rel="preload" as="image" href="images/hero/hero-poster.jpg" fetchpriority="high">
+  <link rel="stylesheet" href="css/style.css?v=20260810-perf-1">
 </head>
 <body>
 
@@ -96,7 +97,7 @@
   <header class="site-header" id="site-header">
     <nav class="nav container">
       <a href="#hero" class="nav__logo" aria-label="Mets Media House home">
-        <img src="brand/primary/mets-wordmark-white.png" alt="Mets Media House" class="nav__logo-img">
+        <picture><source srcset="brand/primary/mets-wordmark-white.webp" type="image/webp"><img width="3770" height="1072" src="brand/primary/mets-wordmark-white.png" alt="Mets Media House" class="nav__logo-img"></picture>
       </a>
       <button class="nav__toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false">
         <span></span>
@@ -118,9 +119,10 @@
          HERO
     ============================================================ -->
     <section class="hero" id="hero">
-      <video class="hero-video" autoplay muted loop playsinline poster="images/hero/hero-poster.jpg" preload="metadata">
-        <source src="videos/hero-loop.mp4" type="video/mp4">
-      </video>
+      <!-- The source is attached by js/main.js once the page has painted, so the
+           5.75 MB download stops competing with CSS, fonts and images for
+           bandwidth during first render. The poster carries the hero until then. -->
+      <video class="hero-video" muted loop playsinline poster="images/hero/hero-poster.jpg" preload="none" data-src="videos/hero-loop.mp4"></video>
       <div class="hero__scrim" aria-hidden="true"></div>
       <div class="hero__content">
         <h1 class="hero__title">Cinematic videography &amp; photography for mining, construction &amp; infrastructure.</h1>
@@ -149,7 +151,7 @@
 
           <div class="capv5__tile">
             <div class="capv5__media">
-              <img class="capv5__img is-capture" src="images/capabilities/capture.jpg" alt="On-site photographer capturing portrait of mining crew member" loading="lazy">
+              <picture><source srcset="images/capabilities/capture.webp" type="image/webp"><img width="1600" height="900" class="capv5__img is-capture" src="images/capabilities/capture.jpg" alt="On-site photographer capturing portrait of mining crew member" loading="lazy"></picture>
               <div class="capv5__overlay"></div>
             </div>
             <div class="capv5__body">
@@ -165,7 +167,7 @@
 
           <div class="capv5__tile">
             <div class="capv5__media">
-              <img class="capv5__img" src="images/capabilities/production.jpg" alt="Liebherr 9800 mining shovel during production shoot" loading="lazy">
+              <picture><source srcset="images/capabilities/production.webp" type="image/webp"><img width="1600" height="900" class="capv5__img" src="images/capabilities/production.jpg" alt="Liebherr 9800 mining shovel during production shoot" loading="lazy"></picture>
               <div class="capv5__overlay"></div>
             </div>
             <div class="capv5__body">
@@ -182,7 +184,7 @@
 
           <div class="capv5__tile">
             <div class="capv5__media">
-              <img class="capv5__img" src="images/capabilities/post-delivery.jpg" alt="DaVinci Resolve colour grading session" loading="lazy">
+              <picture><source srcset="images/capabilities/post-delivery.webp" type="image/webp"><img width="1600" height="865" class="capv5__img" src="images/capabilities/post-delivery.jpg" alt="DaVinci Resolve colour grading session" loading="lazy"></picture>
               <div class="capv5__overlay"></div>
             </div>
             <div class="capv5__body">
@@ -231,7 +233,7 @@
         <article class="work-card">
           <button type="button" class="work-card__btn" data-youtube-id="qJgUuyB9XNg" data-title="Liebherr 9800 Shutdown: Inside FMS Maintenance" aria-label="Play Liebherr 9800 Shutdown video">
             <div class="work-card__thumb">
-              <img src="images/work/liebherr-9800-shutdown.jpg" alt="Liebherr 9800 Shutdown equipment documentation for FMS Group" loading="lazy">
+              <img width="1920" height="1080" src="images/work/liebherr-9800-shutdown.jpg" alt="Liebherr 9800 Shutdown equipment documentation for FMS Group" loading="lazy">
               <div class="work-card__overlay">
                 <h3 class="work-card__title">Liebherr 9800 Shutdown</h3>
               </div>
@@ -245,7 +247,7 @@
         <article class="work-card">
           <button type="button" class="work-card__btn" data-youtube-id="AxNvTWdTeBM" data-title="FMS Bowen Basin: Life On &amp; Off the Mines" aria-label="Play FMS Bowen Basin video">
             <div class="work-card__thumb">
-              <img src="images/work/fms-bowen-basin.jpg" alt="FMS Bowen Basin site documentation for FMS Group" loading="lazy">
+              <picture><source srcset="images/work/fms-bowen-basin.webp" type="image/webp"><img width="1920" height="1080" src="images/work/fms-bowen-basin.jpg" alt="FMS Bowen Basin site documentation for FMS Group" loading="lazy"></picture>
               <div class="work-card__overlay">
                 <h3 class="work-card__title">FMS Bowen Basin</h3>
               </div>
@@ -259,7 +261,7 @@
         <article class="work-card">
           <button type="button" class="work-card__btn" data-youtube-id="oePbBUT1pz8" data-title="PNG Dirt Bike: FMS Group Team Trip" aria-label="Play PNG Dirt Bike video">
             <div class="work-card__thumb">
-              <img src="images/work/png-dirt-bike.jpg" alt="PNG Dirt Bike recruitment film for FMS Group" loading="lazy">
+              <picture><source srcset="images/work/png-dirt-bike.webp" type="image/webp"><img width="1920" height="1080" src="images/work/png-dirt-bike.jpg" alt="PNG Dirt Bike recruitment film for FMS Group" loading="lazy"></picture>
               <div class="work-card__overlay">
                 <h3 class="work-card__title">PNG Dirt Bike</h3>
               </div>
@@ -273,7 +275,7 @@
         <article class="work-card">
           <button type="button" class="work-card__btn" data-youtube-id="YCN6vi3qpfM" data-title="Safety Lift Solutions: Hydraulic Lifting for Excavator &amp; Shovel Maintenance" aria-label="Play Safety Lift Solutions video">
             <div class="work-card__thumb">
-              <img src="images/work/safetylift-solutions.jpg" alt="Safety Lift Solutions brand film for heavy lift jacking systems" loading="lazy">
+              <picture><source srcset="images/work/safetylift-solutions.webp" type="image/webp"><img width="1920" height="1080" src="images/work/safetylift-solutions.jpg" alt="Safety Lift Solutions brand film for heavy lift jacking systems" loading="lazy"></picture>
               <div class="work-card__overlay">
                 <h3 class="work-card__title">Safety Lift Solutions</h3>
               </div>
@@ -287,7 +289,7 @@
         <article class="work-card">
           <button type="button" class="work-card__btn" data-youtube-id="bFIKqYYplD4" data-title="PrimeBatch: Concrete Batching Plant Specialists" aria-label="Play PrimeBatch video">
             <div class="work-card__thumb">
-              <img src="images/work/primebatch.jpg" alt="PrimeBatch brand film for concrete batching operations" loading="lazy">
+              <picture><source srcset="images/work/primebatch.webp" type="image/webp"><img width="1920" height="1080" src="images/work/primebatch.jpg" alt="PrimeBatch brand film for concrete batching operations" loading="lazy"></picture>
               <div class="work-card__overlay">
                 <h3 class="work-card__title">PrimeBatch</h3>
               </div>
@@ -301,7 +303,7 @@
         <article class="work-card">
           <button type="button" class="work-card__btn" data-youtube-id="xVariwQpq3E" data-title="FMS WA: Life Off the Mines" aria-label="Play FMS WA Living video">
             <div class="work-card__thumb">
-              <img src="images/work/fms-wa-living.jpg" alt="FMS WA Living lifestyle film for FMS Group" loading="lazy">
+              <picture><source srcset="images/work/fms-wa-living.webp" type="image/webp"><img width="1920" height="1080" src="images/work/fms-wa-living.jpg" alt="FMS WA Living lifestyle film for FMS Group" loading="lazy"></picture>
               <div class="work-card__overlay">
                 <h3 class="work-card__title">FMS WA Living</h3>
               </div>
@@ -315,7 +317,7 @@
         <article class="work-card">
           <button type="button" class="work-card__btn" data-youtube-id="JNEk4KPplnc" data-title="Liebherr 9800 Shutdown Timelapse for FMS" aria-label="Play Liebherr Shutdown Timelapse video">
             <div class="work-card__thumb">
-              <img src="images/work/liebherr-shutdown-timelapse.jpg" alt="Liebherr 9800 shutdown timelapse for FMS Group" loading="lazy">
+              <picture><source srcset="images/work/liebherr-shutdown-timelapse.webp" type="image/webp"><img width="1920" height="1080" src="images/work/liebherr-shutdown-timelapse.jpg" alt="Liebherr 9800 shutdown timelapse for FMS Group" loading="lazy"></picture>
               <div class="work-card__overlay">
                 <h3 class="work-card__title">Liebherr Shutdown Timelapse</h3>
               </div>
@@ -329,7 +331,7 @@
         <article class="work-card">
           <button type="button" class="work-card__btn" data-youtube-id="N361m34XfcM" data-title="Swimming with Wild Dolphins in Nelson Bay | Dolphin Swim Australia" aria-label="Play Dolphin Swim Australia video">
             <div class="work-card__thumb">
-              <img src="images/work/dolphin-swim-australia.jpg" alt="Dolphin Swim Australia 4K tourism film, Nelson Bay" loading="lazy">
+              <picture><source srcset="images/work/dolphin-swim-australia.webp" type="image/webp"><img width="1920" height="1080" src="images/work/dolphin-swim-australia.jpg" alt="Dolphin Swim Australia 4K tourism film, Nelson Bay" loading="lazy"></picture>
               <div class="work-card__overlay">
                 <h3 class="work-card__title">Dolphin Swim Australia</h3>
               </div>
@@ -367,21 +369,21 @@
       <p class="trusted-by__label">Trusted By</p>
       <div class="trusted-by__marquee">
         <ul class="trusted-by__track">
-          <li class="trusted-by__client"><img class="trusted-by__logo" src="images/Clients/fms-group-white.png" alt="FMS Group" loading="lazy"></li>
-          <li class="trusted-by__client"><img class="trusted-by__logo" src="images/Clients/safety-lift-white.png" alt="Safety Lift Solutions" loading="lazy"></li>
-          <li class="trusted-by__client"><img class="trusted-by__logo" src="images/Clients/primebatch-white.png" alt="PrimeBatch" loading="lazy"></li>
-          <li class="trusted-by__client"><img class="trusted-by__logo trusted-by__logo--tall" src="images/Clients/dolphin-swim-white.png" alt="Dolphin Swim Australia" loading="lazy"></li>
-          <li class="trusted-by__client"><img class="trusted-by__logo" src="images/Clients/ride-industries-wordmark-white.png" alt="Ride Industries" loading="lazy"></li>
-          <li class="trusted-by__client"><img class="trusted-by__logo" src="images/Clients/groundforce-wordmark-white.png" alt="Ground Force Worldwide" loading="lazy"></li>
-          <li class="trusted-by__client"><img class="trusted-by__logo trusted-by__logo--wide" src="images/Clients/towhaul-white.png" alt="TowHaul" loading="lazy"></li>
+          <li class="trusted-by__client"><picture><source srcset="images/Clients/fms-group-white.webp" type="image/webp"><img width="332" height="158" class="trusted-by__logo" src="images/Clients/fms-group-white.png" alt="FMS Group" loading="lazy"></picture></li>
+          <li class="trusted-by__client"><picture><source srcset="images/Clients/safety-lift-white.webp" type="image/webp"><img width="304" height="118" class="trusted-by__logo" src="images/Clients/safety-lift-white.png" alt="Safety Lift Solutions" loading="lazy"></picture></li>
+          <li class="trusted-by__client"><picture><source srcset="images/Clients/primebatch-white.webp" type="image/webp"><img width="293" height="120" class="trusted-by__logo" src="images/Clients/primebatch-white.png" alt="PrimeBatch" loading="lazy"></picture></li>
+          <li class="trusted-by__client"><picture><source srcset="images/Clients/dolphin-swim-white.webp" type="image/webp"><img width="621" height="671" class="trusted-by__logo trusted-by__logo--tall" src="images/Clients/dolphin-swim-white.png" alt="Dolphin Swim Australia" loading="lazy"></picture></li>
+          <li class="trusted-by__client"><picture><source srcset="images/Clients/ride-industries-wordmark-white.webp" type="image/webp"><img width="259" height="85" class="trusted-by__logo" src="images/Clients/ride-industries-wordmark-white.png" alt="Ride Industries" loading="lazy"></picture></li>
+          <li class="trusted-by__client"><picture><source srcset="images/Clients/groundforce-wordmark-white.webp" type="image/webp"><img width="322" height="83" class="trusted-by__logo" src="images/Clients/groundforce-wordmark-white.png" alt="Ground Force Worldwide" loading="lazy"></picture></li>
+          <li class="trusted-by__client"><picture><source srcset="images/Clients/towhaul-white.webp" type="image/webp"><img width="2126" height="1282" class="trusted-by__logo trusted-by__logo--wide" src="images/Clients/towhaul-white.png" alt="TowHaul" loading="lazy"></picture></li>
           <!-- Duplicate set for seamless loop -->
-          <li class="trusted-by__client" aria-hidden="true"><img class="trusted-by__logo" src="images/Clients/fms-group-white.png" alt="" loading="lazy"></li>
-          <li class="trusted-by__client" aria-hidden="true"><img class="trusted-by__logo" src="images/Clients/safety-lift-white.png" alt="" loading="lazy"></li>
-          <li class="trusted-by__client" aria-hidden="true"><img class="trusted-by__logo" src="images/Clients/primebatch-white.png" alt="" loading="lazy"></li>
-          <li class="trusted-by__client" aria-hidden="true"><img class="trusted-by__logo trusted-by__logo--tall" src="images/Clients/dolphin-swim-white.png" alt="" loading="lazy"></li>
-          <li class="trusted-by__client" aria-hidden="true"><img class="trusted-by__logo" src="images/Clients/ride-industries-wordmark-white.png" alt="" loading="lazy"></li>
-          <li class="trusted-by__client" aria-hidden="true"><img class="trusted-by__logo" src="images/Clients/groundforce-wordmark-white.png" alt="" loading="lazy"></li>
-          <li class="trusted-by__client" aria-hidden="true"><img class="trusted-by__logo trusted-by__logo--wide" src="images/Clients/towhaul-white.png" alt="" loading="lazy"></li>
+          <li class="trusted-by__client" aria-hidden="true"><picture><source srcset="images/Clients/fms-group-white.webp" type="image/webp"><img width="332" height="158" class="trusted-by__logo" src="images/Clients/fms-group-white.png" alt="" loading="lazy"></picture></li>
+          <li class="trusted-by__client" aria-hidden="true"><picture><source srcset="images/Clients/safety-lift-white.webp" type="image/webp"><img width="304" height="118" class="trusted-by__logo" src="images/Clients/safety-lift-white.png" alt="" loading="lazy"></picture></li>
+          <li class="trusted-by__client" aria-hidden="true"><picture><source srcset="images/Clients/primebatch-white.webp" type="image/webp"><img width="293" height="120" class="trusted-by__logo" src="images/Clients/primebatch-white.png" alt="" loading="lazy"></picture></li>
+          <li class="trusted-by__client" aria-hidden="true"><picture><source srcset="images/Clients/dolphin-swim-white.webp" type="image/webp"><img width="621" height="671" class="trusted-by__logo trusted-by__logo--tall" src="images/Clients/dolphin-swim-white.png" alt="" loading="lazy"></picture></li>
+          <li class="trusted-by__client" aria-hidden="true"><picture><source srcset="images/Clients/ride-industries-wordmark-white.webp" type="image/webp"><img width="259" height="85" class="trusted-by__logo" src="images/Clients/ride-industries-wordmark-white.png" alt="" loading="lazy"></picture></li>
+          <li class="trusted-by__client" aria-hidden="true"><picture><source srcset="images/Clients/groundforce-wordmark-white.webp" type="image/webp"><img width="322" height="83" class="trusted-by__logo" src="images/Clients/groundforce-wordmark-white.png" alt="" loading="lazy"></picture></li>
+          <li class="trusted-by__client" aria-hidden="true"><picture><source srcset="images/Clients/towhaul-white.webp" type="image/webp"><img width="2126" height="1282" class="trusted-by__logo trusted-by__logo--wide" src="images/Clients/towhaul-white.png" alt="" loading="lazy"></picture></li>
         </ul>
       </div>
     </section>
@@ -466,13 +468,13 @@
           <div class="about__photo-pair">
             <figure class="about__tile">
               <span class="about__tile-frame">
-                <img src="images/team/jordan.jpg" alt="Jordan, co-founder of Mets Media" loading="lazy" width="1200" height="1600">
+                <picture><source srcset="images/team/jordan.webp" type="image/webp"><img src="images/team/jordan.jpg" alt="Jordan, co-founder of Mets Media" loading="lazy" width="1200" height="1600"></picture>
               </span>
               <figcaption class="about__tile-name">Jordan</figcaption>
             </figure>
             <figure class="about__tile">
               <span class="about__tile-frame">
-                <img src="images/team/callum.jpg" alt="Callum, co-founder of Mets Media" loading="lazy" width="1200" height="1600">
+                <picture><source srcset="images/team/callum.webp" type="image/webp"><img src="images/team/callum.jpg" alt="Callum, co-founder of Mets Media" loading="lazy" width="1200" height="1600"></picture>
               </span>
               <figcaption class="about__tile-name">Callum</figcaption>
             </figure>
@@ -556,7 +558,7 @@
 
         <div class="service-map__frame" aria-label="Australia map showing Mets Media House home base and main service areas">
           <div class="service-map__canvas">
-            <img src="images/service-areas/australia-service-map-polished.png" alt="Australia map outline with state borders" class="service-map__image" loading="lazy">
+            <picture><source srcset="images/service-areas/australia-service-map-polished.webp" type="image/webp"><img width="1363" height="1287" src="images/service-areas/australia-service-map-polished.png" alt="Australia map outline with state borders" class="service-map__image" loading="lazy"></picture>
             <div class="service-map__marker service-map__marker--home" style="--x: 95.75%; --y: 49.25%;">
               <span class="service-map__pin" aria-hidden="true"></span>
               <span class="service-map__marker-label service-map__marker-label--left service-map__marker-label--coast">Sunshine Coast</span>
@@ -635,7 +637,7 @@
   <footer class="footer">
     <div class="container footer__layout">
       <a href="#hero" class="footer__logo" aria-label="Back to top">
-        <img src="brand/primary/mets-wordmark-white.png" alt="Mets Media House" class="footer__logo-img">
+        <picture><source srcset="brand/primary/mets-wordmark-white.webp" type="image/webp"><img width="3770" height="1072" src="brand/primary/mets-wordmark-white.png" alt="Mets Media House" class="footer__logo-img"></picture>
       </a>
       <p class="footer__legal">&copy; <span id="year"></span> Mets Media · ABN 13 906 945 371</p>
     </div>
@@ -657,6 +659,6 @@
     </div>
   </div>
 
-  <script src="js/main.js?v=cta-shine-4"></script>
+  <script src="js/main.js?v=20260810-perf-1"></script>
 </body>
 </html>

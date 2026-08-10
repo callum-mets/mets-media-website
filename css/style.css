@@ -276,6 +276,13 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  /* The poster also sits on the section itself, so the hero is never empty:
+     covers reduced motion (where .hero-video is hidden), the moment before the
+     deferred video attaches, a refused autoplay, and a failed video load. */
+  background-image: url('../images/hero/hero-poster.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .hero-video {

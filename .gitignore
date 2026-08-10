@@ -12,3 +12,38 @@ videos/*.mov
 .vscode/
 .idea/
 .claude/
+
+# ---------------------------------------------------------------
+# Everything below is untracked scratch that must never be committed.
+# This repo deploys to Cloudflare Pages on push, so anything committed
+# is published publicly. Keep the repo to files the site actually serves.
+# ---------------------------------------------------------------
+
+# 588 MB of AI render frames and prompt experiments from June 2026.
+# Nothing on the site references it. One `git add .` would put it in
+# history permanently and there is no easy way back out.
+Codex/
+
+# Scratch output dirs
+out/
+output/
+tmp/
+
+# Backups taken during the August 2026 asset optimisation
+_originals_backup/
+_to_delete/
+
+# Orphan left behind by the FUSE mount when a file was deleted while open
+.fuse_hidden*
+
+# Unused client logo source files. Zero references anywhere in the site.
+# Kept on disk deliberately, but they are working files, not site assets,
+# so they should not be deployed. Move them into the METS asset library
+# when convenient.
+images/Clients/FMS GROUP logo 3D generated.png
+images/Clients/FMS logo 3D generated.png
+images/Clients/FMS full colour negative.png
+images/Clients/TowHaul logo white.jpg
+images/Clients/Ground froce world wide.white.png
+images/Clients/groundforce logo.png
+images/Clients/groundforce-white.png

@@ -124,6 +124,46 @@
     track.scrollLeft = 0;
   }
 
+  /* ---- HERO VIDEO, LOADED AFTER FIRST PAINT ------------------ */
+  /* The hero loop is 5.75 MB. With autoplay in the markup the browser starts
+     pulling it immediately, competing with CSS, fonts and images at exactly the
+     moment the page is trying to render. Attaching the source after load means
+     the poster paints straight away and the video arrives a moment later.
+     Same bytes, same video on every device, much earlier first paint. */
+  const heroVideo = document.querySelector('.hero-video[data-src]');
+
+  if (heroVideo && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    let heroStarted = false;
+
+    function startHeroVideo() {
+      if (heroStarted) return;
+      heroStarted = true;
+      const source = document.createElement('source');
+      source.src = heroVideo.dataset.src;
+      source.type = 'video/mp4';
+      heroVideo.appendChild(source);
+      heroVideo.load();
+      // Autoplay can still be refused (low power mode, data saver). The poster
+      // stays put if it is, which is a perfectly good hero.
+      const attempt = heroVideo.play();
+      if (attempt && typeof attempt.catch === 'function') attempt.catch(() => {});
+    }
+
+    function whenIdle(fn) {
+      if (typeof window.requestIdleCallback === 'function') {
+        window.requestIdleCallback(fn, { timeout: 2500 });
+      } else {
+        window.setTimeout(fn, 700);
+      }
+    }
+
+    if (document.readyState === 'complete') {
+      whenIdle(startHeroVideo);
+    } else {
+      window.addEventListener('load', () => whenIdle(startHeroVideo), { once: true });
+    }
+  }
+
   /* ---- VIDEO MODAL ------------------------------------------ */
   const modal      = document.getElementById('video-modal');
   const modalFrame = document.getElementById('video-modal-frame');
@@ -165,9 +205,16 @@
       lastTrigger = null;
     }
 
-    /* TEMP: music licensing blocks YouTube embeds (Error 153).
-       Until Musicbed channel whitelist is sorted with Jordy, open videos
-       in a new tab on youtube.com instead of using the in-page modal.
+    /* Music licensing blocks YouTube embeds (Error 153). Until the Musicbed
+       channel whitelist is sorted with Jordy, open videos in a new tab on
+       youtube.com instead of using the in-page modal.
+
+       RETESTED 2026-08-10: the in-page modal was rebuilt with the YouTube
+       IFrame API and a graceful fallback, and NONE of the eight videos played.
+       The block is still live on all of them, so this is not a code problem
+       and re-enabling openModal will not fix it. Do not try again until either
+       the Musicbed whitelist is done, the Content ID claims are cleared in
+       YouTube Studio, or the videos move to paid hosting.
        To revert: restore the openModal call below. */
     videoBtns.forEach(btn => {
       btn.addEventListener('click', () => {
